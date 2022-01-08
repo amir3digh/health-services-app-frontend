@@ -1,0 +1,27 @@
+@import "../../styles/globalConfig";
+
+.container {
+  background-color: $color1;
+  color: #fff;
+  font-size: 1rem;
+  height: 72px;
+  > * {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}
+.right {
+  grid-column: 1 / span 1;
+  justify-content: start;
+}
+.middle {
+  grid-column: 2 / span 2;
+  justify-content: center;
+}
+.left {
+  width: 61px;
+  direction: ltr;
+  justify-content: space-between;
+  grid-column: 4 / span 1;
+}
