@@ -1,0 +1,52 @@
+@import "/styles/globalConfig";
+
+.container {
+  grid-column: span 4;
+  display: flex;
+  // margin: 22px auto;
+  margin-bottom: 22px;
+}
+
+.childBox,
+.parentBox {
+  display: flex;
+  padding: 0 22px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 36px;
+  height: 73px;
+  flex-grow: 1;
+  line-height: 2;
+}
+.parentBoxClicked {
+  color: #fff;
+  background-color: $color1;
+}
+.servicesChildList {
+  overflow: hidden;
+
+}
+.servicesChildList.closed {
+  height: 0;
+}
+.servicesChildList.opened {
+  height: auto;
+}
+.childBox {
+  flex-direction: column;
+  justify-content: center;
+}
+.parentBox {
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 32px;
+}
+.servicesTitle {
+  font-size: 15px;
+}
+.servicesPrice {
+  font-size: 10px;
+  color: #5b5b5b;
+  span {
+    padding-left: 3px;
+  }
+}

@@ -1,4 +1,4 @@
-@import './fonts.scss';
+@import "./fonts.scss";
 
 html,
 body {
@@ -18,16 +18,21 @@ a {
   box-sizing: border-box;
 }
 
-h1,h2,h3{ 
+h1,
+h2,
+h3 {
   font-family: iransans_b;
 }
-.global-container{
+.global-container {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 5%;
   padding: 0 28px;
   align-items: center;
   justify-items: center;
 }
-
+main{
+  margin: 72px auto;
+  padding: 50px 0;
+}
 

@@ -1,18 +1,18 @@
 import styles from './Header.module.scss'
-import * as Icons from '../icons/Icons.js'
+import * as Icons from '../microComponents/icons/Icons.js'
 
-export function Header(props) {
+export default function Header(props) {
     return (
         <header className={styles.container + ' global-container'}>
             <div className={styles.right}>
                 <Icons.Menu />
             </div>
             <div className={styles.middle}>
-                درباره ما
+                {props.pageTitle}
             </div>
             <div className={styles.left}>
                 <Icons.Logo />
-                <Icons.Request />
+                {props.pageName !== 'requests' ? <Icons.Request /> : ''}
             </div>
         </header>
     )

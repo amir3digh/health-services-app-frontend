@@ -1,0 +1,18 @@
+@import "../../styles/globalConfig";
+
+.toggleBtnContainer {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  overflow-x: scroll;
+  padding: 23px 28px;
+}
+.toggleBtn {
+  border-radius: 24px;
+  font-size: 12px;
+  padding: 18px;
+}
+.notSelected {
+}
+.pending {
+}

@@ -1,32 +1,36 @@
+import Link from 'next/link'
 import styles from './BottomNav.module.scss'
 
 export default function BottomNav() {
     return (
         <div className={styles.container + ' global-container'}>
-            <div className={styles.navItems}>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
-                    <defs>
-                        <filter id="Path_515" x="-2.668" y="0.12" width="45.337" height="45.648" filterUnits="userSpaceOnUse">
-                            <feOffset dy="3" input="SourceAlpha" />
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feFlood floodOpacity="0.161" />
-                            <feComposite operator="in" in2="blur" />
-                            <feComposite in="SourceGraphic" />
-                        </filter>
-                        <clipPath id="clip-Artboard_1">
-                            <rect width="40" height="40" />
-                        </clipPath>
-                    </defs>
-                    <g id="Artboard_1" data-name="Artboard – 1" clipPath="url(#clip-Artboard_1)">
-                        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_515)">
-                            <path id="Path_515-2" data-name="Path 515" d="M-105.9,158.259V145.971a1.172,1.172,0,0,1,.37-.85l10.877-10.345a1.3,1.3,0,0,1,1.744-.03l11.446,10.14a1.171,1.171,0,0,1,.4.881l-.011,12.492a1.231,1.231,0,0,1-1.258,1.2h-5.849a1.231,1.231,0,0,1-1.259-1.2v-7.488a1.231,1.231,0,0,0-.39-.869,1.231,1.231,0,0,0-.893-.331l-5.269.1a1.229,1.229,0,0,0-1.232,1.2v7.387a1.231,1.231,0,0,1-1.259,1.2h-6.161a1.23,1.23,0,0,1-1.256-1.2Z" transform="translate(113.48 -126.94)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2.5" />
+            <Link href='/'>
+                <a className={styles.navItems}>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+                        <defs>
+                            <filter id="Path_515" x="-2.668" y="0.12" width="45.337" height="45.648" filterUnits="userSpaceOnUse">
+                                <feOffset dy="3" input="SourceAlpha" />
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feFlood floodOpacity="0.161" />
+                                <feComposite operator="in" in2="blur" />
+                                <feComposite in="SourceGraphic" />
+                            </filter>
+                            <clipPath id="clip-Artboard_1">
+                                <rect width="40" height="40" />
+                            </clipPath>
+                        </defs>
+                        <g id="Artboard_1" data-name="Artboard – 1" clipPath="url(#clip-Artboard_1)">
+                            <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Path_515)">
+                                <path id="Path_515-2" data-name="Path 515" d="M-105.9,158.259V145.971a1.172,1.172,0,0,1,.37-.85l10.877-10.345a1.3,1.3,0,0,1,1.744-.03l11.446,10.14a1.171,1.171,0,0,1,.4.881l-.011,12.492a1.231,1.231,0,0,1-1.258,1.2h-5.849a1.231,1.231,0,0,1-1.259-1.2v-7.488a1.231,1.231,0,0,0-.39-.869,1.231,1.231,0,0,0-.893-.331l-5.269.1a1.229,1.229,0,0,0-1.232,1.2v7.387a1.231,1.231,0,0,1-1.259,1.2h-6.161a1.23,1.23,0,0,1-1.256-1.2Z" transform="translate(113.48 -126.94)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2.5" />
+                            </g>
                         </g>
-                    </g>
-                </svg>
-                <span>
-                    خانه
-                </span>
-            </div>
+                    </svg>
+                    <span>
+                        خانه
+                    </span>
+                </a>
+            </Link>
+
             <div className={styles.navItems}>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
                     <defs>

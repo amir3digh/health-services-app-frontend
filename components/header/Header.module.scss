@@ -5,6 +5,11 @@
   color: #fff;
   font-size: 1rem;
   height: 72px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
   > * {
     display: flex;
     align-items: center;
@@ -24,4 +29,7 @@
   direction: ltr;
   justify-content: space-between;
   grid-column: 4 / span 1;
+  a{
+    display: flex;
+  }
 }

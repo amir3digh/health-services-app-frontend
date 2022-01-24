@@ -1,4 +1,4 @@
-import '../styles/globals.scss'
+import '../styles/global.scss'
 import '../styles/_globalConfig.scss'
 
 function MyApp({ Component, pageProps }) {

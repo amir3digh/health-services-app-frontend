@@ -1,0 +1,137 @@
+@import '../../styles/globalConfig';
+
+.container {
+  position: absolute;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  [disabled]{
+    // opacity: .5;
+    z-index: 5;
+  }
+}
+.detail {
+  position: relative;
+  width: 324px;
+  padding-right: 21px;
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #fff;
+  border-radius: 36px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  .cover{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-radius: inherit;
+    z-index: 10;
+    opacity: .5;
+  }
+}
+.image {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  >*{
+    position: relative;
+    z-index: 20;
+  }
+}
+
+.choice {
+  display: flex;
+}
+.title {
+  margin-right: 8px;
+  line-height: 2;
+  font-size: 15px;
+}
+.description {
+  font-size: 10px;
+  line-height: 3;
+}
+.electronic {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  >*{
+    position: relative;
+    z-index: 20;
+  }
+  .insurance {
+    display: flex;
+    margin: 8px 0;
+    .title {
+      font-size: 13px;
+    }
+  }
+  .data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .labelText {
+      font-size: 13px;
+    }
+    input {
+      border: none;
+      box-shadow: inset 0px 3px 4px 0px rgba(0, 0, 0, 0.16);
+      border-radius: 24px;
+      width: 120px;
+      font-size: 12px;
+      padding: 16px 20px;
+    }
+  }
+  .choice {
+    margin-left: 1rem;
+  }
+}
+.fileContainer {
+  display: flex;
+  width: 72px;
+  float: left;
+  .button {
+    display: flex;
+    padding: 1rem;
+    box-shadow: inset 0px 3px 4px 0px rgba(0, 0, 0, 0.16);
+    border-radius: 50%;
+  }
+}
+.fileInput {
+  color: transparent;
+  width: 0;
+  height: 0;
+}
+.fileInput::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.action{
+  margin: 22px auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+.submit,
+.close {
+  font-family: iransans;
+  font-size: 15px;
+  border: none;
+  border-radius: 36px;
+  color: #fff;
+  padding: 16px;
+  line-height: 1;
+}
+.submit{
+  background-color: $color1;
+  margin-left: 22px;
+}
+.close{
+  background-color: $color3;
+}

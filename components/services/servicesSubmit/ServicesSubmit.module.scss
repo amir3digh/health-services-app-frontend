@@ -1,0 +1,23 @@
+@import '../../../styles/globalConfig';
+
+.container{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.button{
+    background-color: $color1;
+    color: #fff;
+    padding: 16px 40px;
+    font-size: 15px;
+    line-height: 1;
+}
+.rightBtn{
+    border-radius: 24px 0 0 24px;
+}
+.leftBtn{
+    border-radius: 0 24px 24px 0;
+}
