@@ -5,6 +5,7 @@ import styles from './ServicesItems.module.scss';
 export default function ServicesParent(props) {
     const title = props.title;
     const services = props.child;
+    const prescription = props.prescription;
     const [clicked, setClicked] = useState(false);
     // const [childList, setChildList] = useState();
     const clickHandler = (event) => {
@@ -29,6 +30,7 @@ export default function ServicesParent(props) {
                         service={el}
                         key={el.id}
                         update={props.update}
+                        prescription={prescription}
                     />
                 )}
             </div>

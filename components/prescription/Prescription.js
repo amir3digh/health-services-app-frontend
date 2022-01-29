@@ -2,33 +2,71 @@ import RadioBtn from '../microComponents/radioButton/RadioBtn';
 import styles from './Prescription.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
+import { imageUploadRequest, pendingRequest } from '../../lib/requests';
+import Loading from '../loading/Loading';
 
 export default function Prescription(props) {
   const opened = props.opened;
+  const prescriptionSynced = props.prescriptionSynced;
+  const setPrescriptionSynced = props.setPrescriptionSynced;
+
   const [type, setType] = useState('image');
   const typeChange = (targetName) => {
     setType(targetName);
   }
+
   const [insurance, setInsurance] = useState('tamin');
   const insuranceChange = (targetName) => {
     setInsurance(targetName);
   };
-  const [imageSrc, setImageSrc] = useState('/images/prescription_logo.png');
+
+  const [prescriptionImg, setPrescriptionImg] = useState({ file: '/images/prescription_logo.png' });
   const handleImageChange = (event) => {
     let files = event.target.files;
-    if(!files){return}
+    if (!files) { return }
+    const fileName = event.target.files[0].name;
     let reader = new FileReader();
     reader.readAsDataURL(files[0]);
     reader.onload = (e) => {
-      setImageSrc(e.target.result);
+      setPrescriptionImg({ file: e.target.result, name: fileName });
     }
   }
 
-  const [personalId, setPersonalId] = useState('0123456789');
-  const handlePersonalIdChange = (event) => {
+  const [nationalCode, setNationalCode] = useState('0123456789');
+  const handleNationalCodeChange = (event) => {
     const value = event.target.value;
-    setPersonalId(value);
+    setNationalCode(value);
   }
+
+  const [refCode, setRefCode] = useState('0123456789');
+  const handleRefCodeChange = (event) => {
+    const value = event.target.value;
+    setRefCode(value);
+  }
+
+  const submit = async (event) => {
+    event.preventDefault();
+    setPrescriptionSynced(false);
+
+    let prescription = {};
+    if (type === 'image') {
+      const uploadResponse = imageUploadRequest(prescriptionImg);
+      prescription = {
+        prescription: await uploadResponse.then(res => { return res.result.file.id }),
+        national_code: null,
+        ref_code: null
+      };
+    }
+    type === 'electronic' ?
+      prescription = {
+        prescription: null,
+        national_code: nationalCode,
+        ref_code: refCode
+      } : '';
+
+    props.setPrescription(prescription);
+  }
+
   const closeHandler = (event) => {
     event.preventDefault();
     props.popupHandler('close');
@@ -36,8 +74,9 @@ export default function Prescription(props) {
   return (
     opened ?
       <div className={styles.container}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={submit}>
           <div className={styles.detail}>
+            <Loading onload={!prescriptionSynced} />
             <div className={styles.cover}></div>
             <div className={styles.image}>
               <div className={styles.choice}>
@@ -58,11 +97,11 @@ export default function Prescription(props) {
                     <Image
                       width={42}
                       height={42}
-                      src={imageSrc}
+                      src={prescriptionImg.file}
                       alt='add image logo'
                     />
                   </div>
-                  <input type='file' className={styles.fileInput} onChange={handleImageChange}/>
+                  <input type='file' className={styles.fileInput} onChange={handleImageChange} />
                 </label>
               </div>
             </div>
@@ -100,18 +139,18 @@ export default function Prescription(props) {
               <div className={styles.data} disabled={type !== 'electronic'}>
                 <label>
                   <span className={styles.labelText}>کدملی</span>
-                  <input type='text' onChange={handlePersonalIdChange} value={personalId}/>
+                  <input className={styles.idInput} type='text' onChange={handleNationalCodeChange} value={nationalCode} />
                 </label>
                 <label>
                   <span className={styles.labelText}>کد رهگیری</span>
-                  <input type='text' />
+                  <input className={styles.idInput} type='text' onChange={handleRefCodeChange} value={refCode} />
                 </label>
               </div>
             </div>
           </div>
           <div className={styles.action}>
             <input className={styles.submit} type='submit' value='ثبت' />
-            <button onClick={closeHandler} className={styles.close}>لغو</button>
+            <button className={styles.close} onClick={closeHandler} >لغو</button>
           </div>
         </form>
       </div>

@@ -8,6 +8,7 @@ export default function ServicesChildren(props) {
     const id = service.id;
     const title = service.title;
     const price = service.price;
+    const prescription = props.prescription;
     
     const update = props.update;
 
@@ -16,14 +17,12 @@ export default function ServicesChildren(props) {
         setPending(service.pending);
     },[service])
     
-    const [prescription, setPrescription] = useState({});
-
     const handleClick = async (event) => {
         event.preventDefault();
         const serviceId = event.currentTarget.id;
-        const requestAction = pending ? 'DELETE' : 'POST';
+        const requestAction = pending ? 'delete' : 'post';
         const resData = await pendingRequest(serviceId, prescription, requestAction);
-        console.log(resData);
+        console.log(resData, prescription);
         update();
     }
     return (
