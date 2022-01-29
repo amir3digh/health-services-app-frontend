@@ -9,8 +9,9 @@ import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSub
 import Prescription from "../../components/prescription/Prescription";
 
 export async function getStaticPaths() {
-    const data = await servicesRequest();
-    const paths = data.result.map(el => {
+    let data = await servicesRequest();
+    data = data.result.filter(el => el.slug !== 'drug')
+    const paths = data.map(el => {
         return {
             params: {
                 service: el.slug,
@@ -86,6 +87,7 @@ export default function Service(props) {
             :
             setPopup({ state: 'opened' });
     }
+
 
     return (
         <main className="container">
