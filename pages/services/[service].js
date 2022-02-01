@@ -7,6 +7,7 @@ import { pendingRequest, serviceDataRequest, servicesRequest } from "../../lib/r
 import { useEffect, useState } from 'react';
 import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSubmit";
 import Prescription from "../../components/prescription/Prescription";
+import { getCookies } from "cookies-next";
 
 export async function getStaticPaths() {
     let data = await servicesRequest();
@@ -29,14 +30,10 @@ export async function getStaticProps({ params }) {
     let response = await servicesRequest();
     const pageData = response.result.filter(el => el.slug === slug)[0];
 
-    response = await serviceDataRequest(slug);
-    const serviceData = response.result;
-
     return {
         props: {
             slug,
             pageData,
-            serviceData
         }
     }
 }
@@ -44,7 +41,16 @@ export default function Service(props) {
     const title = props.pageData.title;
     const slug = props.pageData.slug;
 
-    const [services, setServices] = useState(props.serviceData);
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        const getData = async () => {
+            const response = await serviceDataRequest(slug);
+            setServices(response.result);
+        }
+        getData();
+    }, [slug]);
+
     const [pendingServices, setPendingServices] = useState([]);
 
     useEffect(() => {

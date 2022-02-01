@@ -4,6 +4,7 @@ import styles from '../../styles/Services.module.scss'
 import Header from '../../components/header/Header'
 import BottomNav from '../../components/bottom_nav/BottomNav'
 import Link from 'next/link'
+import { getCookies } from 'cookies-next'
 
 export async function getServerSideProps() {
     const response = await fetch('http://37.152.179.2/api/services/');

@@ -1,0 +1,96 @@
+@import "../../styles/globalConfig";
+
+.container {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  grid-column: 2 / span 2;
+}
+.registerForm,
+.verifyForm {
+  grid-column: span 4;
+  width: 100%;
+  form {
+    > * {
+      margin-bottom: 23px;
+    }
+  }
+}
+.title {
+  width: 100%;
+  font-size: 14px;
+  line-height: 3;
+}
+.userInput {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  box-shadow: inset 0px 3px 4px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 24px;
+  padding: 0 20px;
+  input {
+    border: none;
+    font-size: 15px;
+    direction: ltr;
+    text-align: left;
+    font-family: iransans;
+    flex-grow: 1;
+    background-color: transparent!important;
+  }
+  input[type="text"]:focus {
+    background-color: transparent;
+    outline: none;
+  }
+}
+.verifyCode {
+  flex-direction: column;
+  position: relative;
+}
+.codeInput {
+  direction: ltr;
+  input {
+    background-color: transparent;
+    border: none !important;
+    font-family: iransans !important;
+  }
+}
+.verifyCodeContainer {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 0;
+  bottom: 5px;
+  display: flex;
+  align-items: flex-end;
+  z-index: -1;
+  direction: ltr;
+  svg {
+    flex-grow: 1;
+  }
+}
+.submit {
+  width: 100%;
+  border: none;
+  color: #fff;
+  font-family: iransans;
+  font-size: 15px;
+  line-height: 1;
+  border-radius: 24px;
+  padding: 16px 0;
+  background-color: $color1;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+}
+.rules {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
