@@ -6,18 +6,7 @@ import headStyles from '../../components/services/servicesHead/ServicesHead.modu
 import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSubmit";
 import ServicesDrug from "../../components/services/servicesItems/ServicesDrug";
 
-export async function getStaticProps() {
-    const response = await serviceDataRequest('drug');
-    const serviceData = response.result;
-
-    return {
-        props: {
-            serviceData
-        }
-    }
-}
-
-export default function Drug(props) {
+export default function Drug() {
     const title = 'دریافت نسخه دارو درب منزل';
     
 
