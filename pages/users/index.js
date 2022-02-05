@@ -26,6 +26,7 @@ export default function Register() {
 
     const [verifyCode, setVerifyCode] = useState();
     const [verifyToken, setVerifyToken] = useState({});
+    const [authAction, setAuthAction] = useState('register');
 
     const verifyCodeChange = (event) => {
         const value = event.split('');
@@ -36,6 +37,7 @@ export default function Register() {
         event.preventDefault();
         let response = await sendSmsRequest(phoneNumber, 'register');
         if (response === 'isRegistered') {
+            setAuthAction('login');
             response = await sendSmsRequest(phoneNumber, 'login');
         }
 
@@ -55,7 +57,7 @@ export default function Register() {
             ...verifyToken,
             token: verifyCode.join('')
         }
-        const response = await verifySmsRequest(smsToken);
+        const response = await verifySmsRequest(smsToken, authAction);
         console.log(response);
         if (response === 'wrongToken') {
             return;
