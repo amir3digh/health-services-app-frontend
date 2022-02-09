@@ -1,27 +1,52 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import PrescriptionRecord from '../../drug/PrescriptionRecord';
 import styles from './ServicesItems.module.scss';
 
-export default function ServicesParent(props) {
+export default function ServicesDrug(props) {
     const title = props.title;
-    const [clicked, setClicked] = useState(false);
+    const addTitle = props.addTitle;
+    const pending = props.pending;
+    const type = props.type;
+
     const clickHandler = (event) => {
         event.preventDefault();
-        setClicked((prev) => {
-            return prev ? false : true;
-        });
+        props.onClick(event);
     }
     return (
         <div>
             <div className={styles.container + ' global-container'}>
-                <div onClick={clickHandler} className={styles.parentBox + ' ' + (clicked ? styles.parentBoxClicked : '')}>
-                    <div className={styles.servicesTitle}>{title}</div>
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" width="25.023" height="14.199" viewBox="0 0 25.023 14.199">
-                        <path fill="none" stroke={clicked ? "#fff" : "#117c6f"} id="chevron-back" d="M12.938,7.875,23.063,18l-4.219,4.219-5.906,5.906" transform="translate(30.511 -10.552) rotate(90)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.375" />
-                    </svg> */}
+                <div onClick={clickHandler} className={styles.parentBox}>
+                    <div className={styles.servicesTitle}>
+                        {title}
+                    </div>
+                    <div className={styles.addDrug}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13.439" height="12.76" viewBox="0 0 13.439 12.76">
+                            <g id="Group_97" data-name="Group 97" transform="translate(-122 -216.236)">
+                                <path id="Path_491" data-name="Path 491" d="M-4930-24233.5h11.439" transform="translate(5053 24456.025)" fill="none" stroke="#707070" strokeLinecap="round" strokeWidth="2" />
+                                <path id="Path_492" data-name="Path 492" d="M-4924.28-24240.346v10.76" transform="translate(5053 24457.582)" fill="none" stroke="#707070" strokeLinecap="round" strokeWidth="2" />
+                            </g>
+                        </svg>
+                        <span>{addTitle}</span>
+                    </div>
                 </div>
             </div>
-            <div className={styles.servicesChildList + ' ' + (clicked ? styles.opened : styles.closed)}>
+            <div className={styles.servicesChildList}>
+                {pending.map(parent => {
+                    const childArray = type === 'prescription' ?
+                        parent.id === 59 ? [] : parent.pending_services :
+                        type === 'product' ?
+                            parent.id !== 59 ? [] : parent.pending_services : null;
 
+                    return childArray ? childArray.map(child => (
+                        <PrescriptionRecord
+                            type={type}
+                            key={child.id}
+                            serviceId={parent.id}
+                            pendingServiceId={child.id}
+                            deletePending={props.deletePending}
+                        />
+                    )) : '';
+                })}
             </div>
         </div>
     )

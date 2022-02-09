@@ -1,14 +1,14 @@
 import RadioBtn from '../microComponents/radioButton/RadioBtn';
-import styles from './Prescription.module.scss';
+import styles from './DrugPopup.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
-import { imageUploadRequest, pendingRequest } from '../../lib/requests';
+import { imageUploadRequest } from '../../lib/requests';
 import Loading from '../loading/Loading';
 
 export default function Prescription(props) {
   const opened = props.opened;
-  const prescriptionSynced = props.prescriptionSynced;
-  const setPrescriptionSynced = props.setPrescriptionSynced;
+  const serverSync = props.serverSync;
+  const setServerSync = props.setServerSync;
 
   const [type, setType] = useState('image');
   const typeChange = (targetName) => {
@@ -46,24 +46,30 @@ export default function Prescription(props) {
 
   const submit = async (event) => {
     event.preventDefault();
-    setPrescriptionSynced(false);
+    setServerSync(false);
 
     let prescription = {};
     if (type === 'image') {
       const uploadResponse = imageUploadRequest(prescriptionImg);
       prescription = {
-        prescription: await uploadResponse.then(res => { return res.result.file.id }),
-        national_code: null,
-        ref_code: null
+        type: 'image',
+        data: {
+          prescription: await uploadResponse.then(res => { return res.result.file.id }),
+          national_code: null,
+          ref_code: null
+        }
       };
     }
-    type === 'electronic' ?
+    if (type === 'electronic') {
       prescription = {
-        prescription: null,
-        national_code: nationalCode,
-        ref_code: refCode
-      } : '';
-
+        type: insurance,
+        data: {
+          prescription: null,
+          national_code: nationalCode,
+          ref_code: refCode
+        }
+      }
+    }
     props.setPrescription(prescription);
   }
 
@@ -76,7 +82,7 @@ export default function Prescription(props) {
       <div className={styles.container}>
         <form className={styles.form} onSubmit={submit}>
           <div className={styles.detail}>
-            <Loading onload={!prescriptionSynced} />
+            <Loading onload={!serverSync} />
             <div className={styles.cover}></div>
             <div className={styles.image}>
               <div className={styles.choice}>

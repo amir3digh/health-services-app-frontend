@@ -6,7 +6,7 @@ import { getCookies, removeCookies, setCookies } from 'cookies-next';
 
 export default function Home() {
   const token = getCookies('jwtToken');
-  removeCookies('jwtToken');
+  // removeCookies('jwtToken');
   if(token.jwtToken){
     Router.push('/services');
   }

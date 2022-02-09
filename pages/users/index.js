@@ -65,7 +65,7 @@ export default function Register() {
         if (response === 'unknown') {
             return;
         }
-        setCookies('jwtToken',response.jwt);
+        setCookies('jwtToken', response.jwt, {maxAge: 60 * 60 * 24 * 10});
         Router.push('/services');
     }
 
