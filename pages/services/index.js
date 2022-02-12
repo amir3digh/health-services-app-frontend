@@ -30,7 +30,7 @@ export default function Services({ servicesData }) {
                         <Image
                             width={397.72}
                             height={162.25}
-                            src='/images/home_page_header.png'
+                            src='/images/home_page_header.svg'
                             alt='doctor services'
                         />
                     </div>
@@ -38,12 +38,21 @@ export default function Services({ servicesData }) {
                 <section className='global-container'>
                     {servicesData.map((el) => {
                         const small = (el.icon_size === 'small');
+                        const slug = el.slug;
                         return (
                             <Link href={'/services' + '/' + el.slug} key={el.id}>
                                 <a className={small ? styles.servicesItemSmall : styles.servicesItemBig}>
                                     <div className={styles.link}>
                                         {small ? <div className={styles.fixTitle}>خدمات</div> : ''}
                                         <div className={styles.serviceTitle}>{el.title}</div>
+                                    </div>
+                                    <div className={styles.serviceIcon}>
+                                        <Image
+                                            width={60}
+                                            height={60}
+                                            src={'/images/services/' + slug + '.svg'}
+                                            alt='service icon'
+                                        />
                                     </div>
                                 </a>
                             </Link>
