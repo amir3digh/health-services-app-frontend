@@ -1,13 +1,12 @@
 import Head from "next/head";
 import Header from "../../components/header/Header";
 import { pendingRequest, serviceDataRequest } from "../../lib/requests";
-import ServicesHead from "../../components/services/servicesHead/ServicesHead";
 import headStyles from '../../components/services/servicesHead/ServicesHead.module.scss';
 import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSubmit";
 import ServicesDrug from "../../components/services/servicesItems/ServicesDrug";
-import Prescription from "../../components/drugPopup/Prescription";
 import { useEffect, useState } from "react";
-import Product from "../../components/drugPopup/Product";
+import Prescription from "../../components/services/drugPopup/Prescription";
+import Product from "../../components/services/drugPopup/Product";
 
 export default function Drug() {
     const title = 'دریافت نسخه دارو درب منزل';
@@ -20,17 +19,10 @@ export default function Drug() {
     const updatePending = async () => {
         const response = await serviceDataRequest('drug');
         if (response.status = 'ok') {
-            const prescriptionData = response.result[0].children;
+            const prescriptionData = response.result[0];
             const productData = response.result[1];
 
-            const imagePres = prescriptionData[0];
-            const imagePending = imagePres;
-
-            const electronicPres = prescriptionData[1].children;
-            const taminPres = electronicPres[0];
-            const salamatPres = electronicPres[1];
-
-            const pending = [imagePending, taminPres, salamatPres, productData];
+            const pending = [prescriptionData, productData];
             setPending(pending);
         }
     }
@@ -42,12 +34,9 @@ export default function Drug() {
     useEffect(() => {
         const prescriptionRequest = async (action) => {
             if (prescription) {
-                let serviceId;
-                (prescription.type === 'image') && (serviceId = 55);
-                (prescription.type === 'tamin') && (serviceId = 57);
-                (prescription.type === 'salamat') && (serviceId = 58);
-
+                const serviceId = 54;
                 const response = await pendingRequest(serviceId, prescription, action);
+                console.log(response);
                 if (response.status === 'ok') {
                     await updatePending();
                     setServerSync(true);
@@ -74,11 +63,11 @@ export default function Drug() {
         action === 'close' ? setPopup('closed') : setPopup('prescription')
     }
 
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState();
     useEffect(() => {
         const productRequest = async (action) => {
             if(product) {
-                const response = await pendingRequest(59, product, action);
+                const response = await pendingRequest(55, product, action);
                 if(response.status === 'ok'){
                     await updatePending();
                     setServerSync(true);
@@ -88,7 +77,7 @@ export default function Drug() {
             }
         }
         productRequest('post');
-    }, [product])
+    }, [product]);
 
     const productClick = e => {
         e.preventDefault();

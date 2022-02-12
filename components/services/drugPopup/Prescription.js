@@ -1,9 +1,9 @@
-import RadioBtn from '../microComponents/radioButton/RadioBtn';
 import styles from './DrugPopup.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
-import { imageUploadRequest } from '../../lib/requests';
-import Loading from '../loading/Loading';
+import Loading from '../../loading/Loading';
+import RadioBtn from '../../microComponents/radioButton/RadioBtn';
+import { imageUploadRequest } from '../../../lib/requests';
 
 export default function Prescription(props) {
   const opened = props.opened;
@@ -52,24 +52,18 @@ export default function Prescription(props) {
     if (type === 'image') {
       const uploadResponse = imageUploadRequest(prescriptionImg);
       prescription = {
-        type: 'image',
-        data: {
-          prescription: await uploadResponse.then(res => { return res.result.file.id }),
-          national_code: null,
-          ref_code: null
-        }
+        prescription_image: await uploadResponse.then(res => { return res.result.file.id }),
+        prescription_type: 1
       };
     }
     if (type === 'electronic') {
       prescription = {
-        type: insurance,
-        data: {
-          prescription: null,
-          national_code: nationalCode,
-          ref_code: refCode
-        }
+        prescription_type: insurance === 'tamin' ? 2 : 3,
+        national_code: nationalCode,
+        ref_code: refCode
       }
     }
+    console.log(prescription);
     props.setPrescription(prescription);
   }
 

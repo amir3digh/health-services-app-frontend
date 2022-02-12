@@ -1,9 +1,8 @@
-import RadioBtn from '../microComponents/radioButton/RadioBtn';
 import styles from './DrugPopup.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
-import { imageUploadRequest } from '../../lib/requests';
-import Loading from '../loading/Loading';
+import Loading from '../../loading/Loading';
+import { imageUploadRequest } from '../../../lib/requests';
 
 export default function Product(props) {
     const opened = props.opened;

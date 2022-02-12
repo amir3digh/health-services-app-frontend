@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import PrescriptionRecord from '../../drug/PrescriptionRecord';
+import DrugPending from '../drug/DrugPending';
 import styles from './ServicesItems.module.scss';
 
 export default function ServicesDrug(props) {
@@ -32,14 +32,17 @@ export default function ServicesDrug(props) {
             </div>
             <div className={styles.servicesChildList}>
                 {pending.map(parent => {
-                    const childArray = type === 'prescription' ?
-                        parent.id === 59 ? [] : parent.pending_services :
-                        type === 'product' ?
-                            parent.id !== 59 ? [] : parent.pending_services : null;
+                    const childArray =
+                        type === 'prescription' && parent.id === 54 ?
+                            parent.pending_services :
+                            type === 'product' && parent.id === 55 ?
+                                parent.pending_services :
+                                [];
 
                     return childArray ? childArray.map(child => (
-                        <PrescriptionRecord
+                        <DrugPending
                             type={type}
+                            prescriptionType={child.prescription_type}
                             key={child.id}
                             serviceId={parent.id}
                             pendingServiceId={child.id}
