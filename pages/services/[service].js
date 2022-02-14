@@ -6,8 +6,8 @@ import ServicesParent from "../../components/services/servicesItems/ServicesPare
 import { pendingRequest, serviceDataRequest, servicesRequest } from "../../lib/requests";
 import { useEffect, useState } from 'react';
 import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSubmit";
-import Prescription from "../../components/drugPopup/Prescription";
 import { getCookies } from "cookies-next";
+import Prescription from "../../components/services/drugPopup/Prescription";
 
 export async function getStaticPaths() {
     let data = await servicesRequest();
