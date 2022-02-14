@@ -18,6 +18,11 @@ a {
   box-sizing: border-box;
 }
 
+button{
+  border: none;
+  font-family: iransans;
+}
+
 h1,
 h2,
 h3 {
@@ -31,8 +36,34 @@ h3 {
   align-items: center;
   justify-items: center;
 }
-main{
+main {
   margin: 72px auto;
   padding: 50px 0;
 }
-
+.item-box {
+  grid-column: span 4;
+  width: 100%;
+  padding: 0 23px;
+  padding-left: 33px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 73px;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 36px;
+  margin-bottom: 24px;
+  .title{
+    color: #262626;
+    font-size: 15px;
+  }
+  .subtitle{
+    font-size: 12px;
+    color: #5b5b5b;
+  }
+  .button{
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+  }
+}

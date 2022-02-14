@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import styles from './ServicesSubmit.module.scss';
 
-
 export default function ServicesSubmit() {
     return (
         <div className={styles.container}>
-            <Link href='/'>
+            <Link href='/services/pending'>
                 <a className={styles.button + ' ' + styles.rightBtn}>ثبت نهایی و پرداخت</a>
             </Link>
             <Link href='/services'>

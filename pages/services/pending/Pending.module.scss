@@ -1,0 +1,41 @@
+.description{
+    grid-column: 1 / span 4;
+    font-size: 12px;
+    margin-bottom: 23px;
+}
+.title{
+    width: 100%;
+    grid-column: 1 / span 4;
+    font-size: 15px;
+    text-align: right;
+    margin-bottom: 15px;
+}
+.sum{
+    width: 100%;
+    grid-column: 1 / span 4;
+    font-size: 15px;
+}
+.action{
+    position: fixed;
+    bottom: 23px;
+    width: 100%;
+    row-gap: 16px;
+    .submit, .cancel{
+        width: 97%;
+        grid-column: 1 / span 4;
+        font-size: 15px;
+        color: #fff;
+        line-height: 1;
+        padding-bottom: 16px;
+        padding-top: 16px;
+        border-radius: 24px;
+    }
+    .submit{
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+        background-color: #117C6F;
+    }
+    .cancel{
+        box-shadow: inset 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+        background-color: #289C8E;
+    }
+}
