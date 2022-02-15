@@ -1,8 +1,8 @@
 import Header from '../../components/header/Header';
 import BottomNav from '../../components/bottom_nav/BottomNav';
 import Head from 'next/head';
-import Pending from '../../components/requests/Pending';
 import ToggleBtn from '../../components/requests/ToggleBtn';
+import PendingItem from '../../components/requests/PendingItem';
 
 export default function RequestPage() {
     const title = 'درخواست ها';
@@ -18,7 +18,7 @@ export default function RequestPage() {
             />
             <main>
                 <ToggleBtn />
-                <Pending />
+                <PendingItem />
             </main>
             <BottomNav />
         </div>
