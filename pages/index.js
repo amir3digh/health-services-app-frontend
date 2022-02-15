@@ -35,7 +35,7 @@ export default function Home() {
             <Image
               width={714}
               height={590}
-              src='/images/intro_p1.svg'
+              src='/images/introduction_1.svg'
               alt='introduction image'
             />
           </div>
