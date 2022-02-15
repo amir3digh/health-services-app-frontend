@@ -15,7 +15,8 @@
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
-    "react-verification-code-input": "^1.2.9"
+    "react-verification-code-input": "^1.2.9",
+    "sharp": "^0.30.1"
   },
   "devDependencies": {
     "eslint": "8.6.0",
