@@ -6,7 +6,7 @@ import BottomNav from '../../components/bottom_nav/BottomNav'
 import Link from 'next/link'
 import { getCookies } from 'cookies-next'
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const response = await fetch('http://37.152.179.2/api/services/');
     const data = await response.json();
     return data.status === 'ok' ? { props: { servicesData: data.result } } : 'error';

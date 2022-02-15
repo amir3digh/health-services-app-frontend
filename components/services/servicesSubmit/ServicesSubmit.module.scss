@@ -10,10 +10,12 @@
 }
 .button{
     background-color: $color1;
+    width: 196px;
     color: #fff;
-    padding: 16px 40px;
+    padding: 16px 20px;
     font-size: 15px;
     line-height: 1;
+    text-align: center;
 }
 .rightBtn{
     border-radius: 24px 0 0 24px;
