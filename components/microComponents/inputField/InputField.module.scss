@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  grid-column: 1 / span 4;
+  margin-bottom: 23px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+.labelTxt {
+  padding-right: 5px;
+  font-size: 15px;
+  line-height: 2.5;
+}
+.input {
+  border: none;
+  box-shadow: inset 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 24px;
+  font-size: 15px;
+  padding: 12px 20px;
+  font-family: iransans;
+  color: #5b5b5b;
+}
+.input:hover {
+  outline: none;
+}
+
