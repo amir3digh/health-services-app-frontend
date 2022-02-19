@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Header from "../../../components/header/Header";
 import styles from './Pending.module.scss';
-import { pendingRequest } from '../../../lib/requests';
+import { makeInvoiceRequest, pendingRequest, userProfileRequest } from '../../../lib/requests';
 import PendingItem from "../../../components/requests/PendingItem";
 import Router from "next/router";
 import Popup from "../../../components/popup/Popup";
@@ -14,27 +14,53 @@ export default function Pending() {
 
     const [pageState, setPageState] = useState('setInfo');
 
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [nationalCode, setNationalCode] = useState();
-    const [mobile, setMobile] = useState();
-    const [address, setAddress] = useState();
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [nationalCode, setNationalCode] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [address, setAddress] = useState('');
     const [location, setLocation] = useState([35.6892, 51.3890]);
     const [gender, setGender] = useState('male');
-    const [description, setDescription] = useState();
+    const [description, setDescription] = useState('');
 
-    useEffect(() => { console.log(location) }, [location]);
-    const toggleGender = e => {
+
+    const makeInvoice = async (e) => {
         e.preventDefault();
-        gender === 'male' && setGender('female');
-        gender === 'female' && setGender('male');
+        const factors = {
+            first_name: firstName,
+            last_name: lastName,
+            national_code: nationalCode,
+            operator: gender,
+            description,
+            mobile,
+            address,
+            location: location.lat + ',' + location.lng
+        }
+        console.log(JSON.stringify(factors));
+        const response = await makeInvoiceRequest(factors);
+        if(response.status === 'ok'){
+            console.log(response.result.transaction.link);
+            Router.push(response.result.transaction.link);
+        }
     }
+
+    useEffect(() => {
+        const getUser = async () => {
+            const response = await userProfileRequest();
+            if (response.status === 'ok') {
+                const user = response.result.user;
+                setFirstName(user.first_name || (''));
+                setLastName(user.last_name || (''));
+                setNationalCode(user.national_code || (''));
+                setMobile(user.mobile || (''));
+            }
+        }
+        getUser();
+        updatePending();
+    }, []);
 
     const [pending, setPending] = useState([]);
     const [priceSum, setPriceSum] = useState(0);
-    useEffect(() => {
-        updatePending();
-    }, []);
 
     const updatePending = async () => {
         const response = await pendingRequest('', null, 'get');
@@ -75,6 +101,7 @@ export default function Pending() {
     const Map = dynamic(() => import("../../../components/map/Map"), {
         ssr: false
     });
+
 
     return (
         <div>
@@ -130,7 +157,7 @@ export default function Pending() {
                             <div className={styles.genderIconContainer}>
                                 <button
                                     className={styles.genderIcon + ' ' + (gender === 'female' ? styles.activeGender : '')}
-                                    onClick={toggleGender}
+                                    onClick={() => setGender('female')}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
                                         <defs>
@@ -154,7 +181,7 @@ export default function Pending() {
                                 </button>
                                 <button
                                     className={styles.genderIcon + ' ' + (gender === 'male' ? styles.activeGender : '')}
-                                    onClick={toggleGender}
+                                    onClick={() => setGender('male')}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
                                         <defs>
@@ -184,7 +211,7 @@ export default function Pending() {
                             textarea
                         />
                     </div>
-                    <div className={styles.togglePage}>ثبت و مشاهده لیست خدمات درخواستی</div>
+                    <button onClick={makeInvoice} className={styles.togglePage}>ثبت و مشاهده لیست خدمات درخواستی</button>
                 </main>
             )}
             {pageState === 'location' && (
