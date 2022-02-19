@@ -12,17 +12,18 @@ import InputField from "../../../components/microComponents/inputField/InputFiel
 export default function Pending() {
     const title = 'ثبت نهایی درخواست';
 
-    const [pageState, setPageState] = useState('location');
+    const [pageState, setPageState] = useState('setInfo');
 
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [nationalCode, setNationalCode] = useState();
     const [mobile, setMobile] = useState();
     const [address, setAddress] = useState();
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState([35.6892, 51.3890]);
     const [gender, setGender] = useState('male');
     const [description, setDescription] = useState();
 
+    useEffect(() => { console.log(location) }, [location]);
     const toggleGender = e => {
         e.preventDefault();
         gender === 'male' && setGender('female');
@@ -117,7 +118,7 @@ export default function Pending() {
                             onChange={setAddress}
                             textarea
                         />
-                        <button className={styles.location}>
+                        <button onClick={() => setPageState('location')} className={styles.location}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12.243" height="16.469" viewBox="0 0 12.243 16.469">
                                 <path id="Path_442" data-name="Path 442" d="M15.607,8.971a2.253,2.253,0,1,0,2.253,2.253A2.253,2.253,0,0,0,15.607,8.971Zm0,3.379a1.126,1.126,0,1,1,1.126-1.126,1.126,1.126,0,0,1-1.126,1.126Z" transform="translate(-9.486 -5.1)" />
                                 <path id="Path_443" data-name="Path 443" d="M16.077,3.03A6.122,6.122,0,0,0,6.619,10.7l4.256,6.533a1.043,1.043,0,0,0,1.747,0L16.878,10.7a6.122,6.122,0,0,0-.8-7.67Zm-.143,7.056-4.186,6.426L7.562,10.085a5,5,0,1,1,8.371,0Z" transform="translate(-5.627 -1.238)" />
@@ -190,9 +191,14 @@ export default function Pending() {
                 <div>
                     <div className={styles.mapContainer}>
                         <div className={styles.mapTitle}>موقعیت مورد نظرتان را روی نقشه مشخص کنید</div>
-                        <Map position={location} setLocation={setLocation}/>
+                        <Map
+                            location={location}
+                            setLocation={setLocation}
+                            setPageState={setPageState}
+                            submitStyle={styles.togglePage}
+                            locateStyle={styles.mapLocate}
+                        />
                     </div>
-                    <div className={styles.togglePage}>ثبت موقعیت مکانی مشخص شده</div>
                 </div>
             )
             }
