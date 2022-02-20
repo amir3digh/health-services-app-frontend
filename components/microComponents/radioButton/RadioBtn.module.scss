@@ -1,20 +1,22 @@
-.container{
-    display: flex;
-    align-items: center;
+.container {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 0;
 }
-.checkLabel{
-    font-size: 10px;
-    margin-left: 5px;
+.checkLabel {
+  font-size: 10px;
+  margin-left: 5px;
 }
-.checkContainer{
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    box-shadow: inset 0px 3px 4px 0px rgba(0,0,0,.16);
-    border-radius: 50%;
+.checkContainer {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  box-shadow: inset 0px 3px 4px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 50%;
 }
-.check{
-    position: relative;
-    bottom: 2px;
-    left: 3px;
+.check {
+  position: relative;
+  bottom: 2px;
+  left: 3px;
 }

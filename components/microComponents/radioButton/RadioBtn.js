@@ -25,11 +25,11 @@ export default function RadioBtn(props) {
         </svg>
     );
     return (
-        <div id={name} onClick={radioClick} className={styles.container}>
+        <button id={name} onClick={radioClick} className={styles.container}>
             {checkLabel ? <span className={styles.checkLabel}>{checkLabel}</span> : ''}
             <div className={styles.checkContainer}>
                 {props.checked ? check : ''}
             </div>
-        </div>
+        </button>
     )
 }
