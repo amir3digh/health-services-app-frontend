@@ -23,27 +23,6 @@ export default function Pending() {
     const [gender, setGender] = useState('male');
     const [description, setDescription] = useState('');
 
-
-    const makeInvoice = async (e) => {
-        e.preventDefault();
-        const factors = {
-            first_name: firstName,
-            last_name: lastName,
-            national_code: nationalCode,
-            operator: gender,
-            description,
-            mobile,
-            address,
-            location: location.lat + ',' + location.lng
-        }
-        console.log(JSON.stringify(factors));
-        const response = await makeInvoiceRequest(factors);
-        if(response.status === 'ok'){
-            console.log(response.result.transaction.link);
-            Router.push(response.result.transaction.link);
-        }
-    }
-
     useEffect(() => {
         const getUser = async () => {
             const response = await userProfileRequest();
@@ -57,7 +36,12 @@ export default function Pending() {
         }
         getUser();
         updatePending();
+        setPageState('setInfo');
     }, []);
+
+    const Map = dynamic(() => import("../../../components/map/Map"), {
+        ssr: false
+    });
 
     const [pending, setPending] = useState([]);
     const [priceSum, setPriceSum] = useState(0);
@@ -93,15 +77,25 @@ export default function Pending() {
         return formatter.format(price);
     }
 
-    const handleCancelClick = e => {
+    const makeInvoice = async (e) => {
         e.preventDefault();
-        Router.push('/services');
+        const factors = {
+            first_name: firstName,
+            last_name: lastName,
+            national_code: nationalCode,
+            operator: gender,
+            description,
+            mobile,
+            address,
+            location: location.lat + ',' + location.lng
+        }
+        const response = await makeInvoiceRequest(factors);
+        if (response.status === 'ok') {
+            const paymentLink = response.result.transaction.link;
+            console.log(paymentLink);
+            Router.push(paymentLink);
+        }
     }
-
-    const Map = dynamic(() => import("../../../components/map/Map"), {
-        ssr: false
-    });
-
 
     return (
         <div>
@@ -211,7 +205,7 @@ export default function Pending() {
                             textarea
                         />
                     </div>
-                    <button onClick={makeInvoice} className={styles.togglePage}>ثبت و مشاهده لیست خدمات درخواستی</button>
+                    <button onClick={() => setPageState('pendingItems')} className={styles.togglePage}>ثبت و مشاهده لیست خدمات درخواستی</button>
                 </main>
             )}
             {pageState === 'location' && (
@@ -227,8 +221,7 @@ export default function Pending() {
                         />
                     </div>
                 </div>
-            )
-            }
+            )}
             {pageState === 'pendingItems' && (
                 <main>
                     <div className={'global-container'}>
@@ -260,8 +253,8 @@ export default function Pending() {
                         </div>
                     </div>
                     <div className={styles.action + " global-container"}>
-                        <button className={styles.submit}>پرداخت</button>
-                        <button onClick={handleCancelClick} className={styles.cancel}>لغو درخواست</button>
+                        <button onClick={makeInvoice} className={styles.submit}>پرداخت</button>
+                        <button onClick={() => Router.push('/services')} className={styles.cancel}>لغو درخواست</button>
                     </div>
                     <Popup
                         opened={popup === 'opened'}
