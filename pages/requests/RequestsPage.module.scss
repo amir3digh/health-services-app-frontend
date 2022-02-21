@@ -1,0 +1,45 @@
+.toggleBtnContainer {
+  display: flex;
+  overflow: scroll;
+  padding: 10px 28px;
+  -ms-overflow-style: none;
+  margin-bottom: 23px;
+  column-gap: 20px;
+}
+.toggleBtnContainer::-webkit-scrollbar {
+  display: none;
+}
+.toggleBtn {
+  border-radius: 24px;
+  font-size: 12px;
+  box-shadow: inset 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+  padding: 18px 0;
+  width: 135px;
+  line-height: 1;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.enabled {
+  background-color: #117c6f;
+  color: #fff;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+}
+.title {
+  width: 100%;
+  grid-column: 1 / span 4;
+  font-size: 15px;
+  margin-bottom: 23px;
+}
+
+.saveBtn {
+  grid-column: 1 / span 4;
+  font-size: 15px;
+  color: #fff;
+  background-color: #117c6f;
+  width: 93%;
+  text-align: center;
+  line-height: 1;
+  padding: 16px 0;
+  border-radius: 24px;
+}

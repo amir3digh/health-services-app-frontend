@@ -31,21 +31,23 @@ export default function BottomNav() {
                 </a>
             </Link>
 
-            <div className={styles.navItems}>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
-                    <defs>
-                        <clipPath id="clip-Artboard_1">
-                            <rect width="40" height="40" />
-                        </clipPath>
-                    </defs>
-                    <g id="Artboard_1" data-name="Artboard – 1" clipPath="url(#clip-Artboard_1)">
-                        <path id="assignment-o" d="M19.525,2.462a2.376,2.376,0,0,1,1.746.715,2.313,2.313,0,0,1,.716,1.689V24.45a2.31,2.31,0,0,1-.715,1.689,2.377,2.377,0,0,1-1.747.715H2.462a2.376,2.376,0,0,1-1.746-.715A2.313,2.313,0,0,1,0,24.45V4.867A2.31,2.31,0,0,1,.715,3.178a2.377,2.377,0,0,1,1.747-.715h5.1A3.756,3.756,0,0,1,8.9.688a3.522,3.522,0,0,1,4.18,0,3.761,3.761,0,0,1,1.345,1.775Zm-8.531,0a1.175,1.175,0,0,0-1.2,1.2,1.2,1.2,0,1,0,2.405,0,1.175,1.175,0,0,0-1.2-1.2ZM19.525,24.45V4.867h-2.4V8.531H4.867V4.867h-2.4V24.45H19.526Z" transform="translate(9.006 6.573)" fill="#fff" />
-                    </g>
-                </svg>
-                <span>
-                    درخواست ها
-                </span>
-            </div>
+            <Link href={'/requests'}>
+                <a className={styles.navItems}>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+                        <defs>
+                            <clipPath id="clip-Artboard_1">
+                                <rect width="40" height="40" />
+                            </clipPath>
+                        </defs>
+                        <g id="Artboard_1" data-name="Artboard – 1" clipPath="url(#clip-Artboard_1)">
+                            <path id="assignment-o" d="M19.525,2.462a2.376,2.376,0,0,1,1.746.715,2.313,2.313,0,0,1,.716,1.689V24.45a2.31,2.31,0,0,1-.715,1.689,2.377,2.377,0,0,1-1.747.715H2.462a2.376,2.376,0,0,1-1.746-.715A2.313,2.313,0,0,1,0,24.45V4.867A2.31,2.31,0,0,1,.715,3.178a2.377,2.377,0,0,1,1.747-.715h5.1A3.756,3.756,0,0,1,8.9.688a3.522,3.522,0,0,1,4.18,0,3.761,3.761,0,0,1,1.345,1.775Zm-8.531,0a1.175,1.175,0,0,0-1.2,1.2,1.2,1.2,0,1,0,2.405,0,1.175,1.175,0,0,0-1.2-1.2ZM19.525,24.45V4.867h-2.4V8.531H4.867V4.867h-2.4V24.45H19.526Z" transform="translate(9.006 6.573)" fill="#fff" />
+                        </g>
+                    </svg>
+                    <span>
+                        درخواست ها
+                    </span>
+                </a>
+            </Link>
             <div className={styles.navItems}>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
                     <defs>
