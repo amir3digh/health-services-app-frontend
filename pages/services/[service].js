@@ -6,7 +6,6 @@ import ServicesParent from "../../components/services/servicesItems/ServicesPare
 import { pendingRequest, serviceDataRequest, servicesRequest } from "../../lib/requests";
 import { useEffect, useState } from 'react';
 import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSubmit";
-import { getCookies } from "cookies-next";
 import Prescription from "../../components/services/drugPopup/Prescription";
 
 export async function getStaticPaths() {
@@ -42,45 +41,45 @@ export default function Service(props) {
     const slug = props.pageData.slug;
 
     const [services, setServices] = useState([]);
+    const [pagePrescription, setPagePrescription] = useState(null);
 
-    useEffect(() => {
-        const getData = async () => {
-            const response = await serviceDataRequest(slug);
-            setServices(response.result);
-        }
-        getData();
-    }, [slug]);
-
-    const [pendingServices, setPendingServices] = useState([]);
-
-    useEffect(() => {
-        const pendingServices = [];
-        services.forEach(service => {
-            service.children.length ?
-                service.children.forEach(el => {
-                    el.pending ? pendingServices.push(el) : ''
-                }) :
-                service.pending ? pendingServices.push(service) : '';
-        });
-        setPendingServices(pendingServices);
-    }, [services]);
-
-    const [prescriptionSynced, setPrescriptionSynced] = useState(true);
+    const [serverSync, setServerSync] = useState(true);
     const [prescription, setPrescription] = useState();
 
     useEffect(() => {
         const updatePending = async () => {
-            await Promise.all(
-                pendingServices.map(async pendingService => {
-                    return await pendingRequest(pendingService.id, prescription, 'put');
-                })
-            );
-            setPrescriptionSynced(true);
+            const serviceResponse = await serviceDataRequest(slug);
+            const services = serviceResponse.status === 'ok' ? serviceResponse.result : [];
+            const pendingServices = getPending(services);
+            pendingServices[0] && setPagePrescription(pendingServices[0]);
+            setServices(services);
+            if (prescription) {
+                const data = prescription === 'delete' ? null : prescription;
+                if (!!pendingServices.length) {
+                    const response = await Promise.all(
+                        pendingServices.map(async pendingService => {
+                            return await pendingRequest(pendingService.id, data, 'put');
+                        }));
+                }
+                setPagePrescription(data);
+                setPrescription(null);
+            }
+            setServerSync(true);
             popupHandler('close');
         }
         updatePending();
-    }, [prescription, pendingServices]);
+    }, [prescription, slug]);
 
+    const getPending = servicesArray => {
+        const pendingServices = [];
+        servicesArray.forEach(service => {
+            service.children.length ? service.children.forEach(el => {
+                el.pending && (pendingServices.push(el))
+            }) :
+                service.pending && (pendingServices.push(service));
+        });
+        return pendingServices;
+    }
     const updateServices = async () => {
         const response = await serviceDataRequest(slug);
         setServices(response.result);
@@ -94,7 +93,6 @@ export default function Service(props) {
             setPopup({ state: 'opened' });
     }
 
-
     return (
         <main className="container">
             <Head>
@@ -107,16 +105,16 @@ export default function Service(props) {
             <ServicesHead
                 pageTitle={title}
                 popupHandler={popupHandler}
-                prescription={prescription}
+                prescriptionType={pagePrescription && pagePrescription.prescription_type}
                 setPrescription={setPrescription}
-                prescriptionSynced={prescriptionSynced}
+                setServerSync={setServerSync}
             />
             <Prescription
                 opened={popup.state === 'opened'}
                 popupHandler={popupHandler}
                 setPrescription={setPrescription}
-                prescriptionSynced={prescriptionSynced}
-                setPrescriptionSynced={setPrescriptionSynced}
+                serverSync={serverSync}
+                setServerSync={setServerSync}
             />
             {services.map(el =>
                 el.children.length
@@ -126,14 +124,14 @@ export default function Service(props) {
                         title={el.title}
                         child={el.children}
                         update={updateServices}
-                        prescription={prescription}
+                        prescription={pagePrescription}
                     />
                     :
                     <ServicesChildren
                         service={el}
                         key={el.id}
                         update={updateServices}
-                        prescription={prescription}
+                        prescription={pagePrescription}
                     />
             )}
             <ServicesSubmit />
