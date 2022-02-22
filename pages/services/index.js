@@ -5,11 +5,11 @@ import Header from '../../components/header/Header'
 import BottomNav from '../../components/bottom_nav/BottomNav'
 import Link from 'next/link'
 import { getCookies } from 'cookies-next'
+import { servicesRequest } from '../../lib/requests'
 
 export async function getStaticProps() {
-    const response = await fetch('http://37.152.179.2/api/services/');
-    const data = await response.json();
-    return data.status === 'ok' ? { props: { servicesData: data.result } } : 'error';
+    const response = await servicesRequest();
+    return response.status === 'ok' ? { props: { servicesData: response.result } } : 'error';
 }
 
 export default function Services({ servicesData }) {
