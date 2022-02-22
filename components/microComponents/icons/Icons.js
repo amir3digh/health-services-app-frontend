@@ -310,6 +310,41 @@ export function MaleAvatar() {
     )
 }
 
+export function UnknownAvatar() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="132" height="133.397" viewBox="0 0 132 133.397">
+            <defs>
+                <filter id="Ellipse_26" x="0" y="3.397" width="132" height="130" filterUnits="userSpaceOnUse">
+                    <feOffset dy="3" input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feFlood floodOpacity="0.161" />
+                    <feComposite operator="in" in2="blur" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+            </defs>
+            <g id="Group_171" data-name="Group 171" transform="translate(-18 -17.603)">
+                <g id="Group_137" data-name="Group 137">
+                    <g transform="matrix(1, 0, 0, 1, 18, 17.6)" filter="url(#Ellipse_26)">
+                        <g id="Ellipse_26-2" data-name="Ellipse 26" transform="translate(9 9.4)" fill="none" stroke="#fff" strokeWidth="3">
+                            <ellipse cx="57" cy="56" rx="57" ry="56" stroke="none" />
+                            <ellipse cx="57" cy="56" rx="55.5" ry="54.5" fill="none" />
+                        </g>
+                    </g>
+                    <g id="Group_107" data-name="Group 107" transform="translate(254.017 -1105.083)">
+                        <path id="Path_495" data-name="Path 495" d="M-117.367,1151.868a63.6,63.6,0,0,1,11.247,36.215,63.9,63.9,0,0,1-63.9,63.9,63.9,63.9,0,0,1-63.9-63.9,64,64,0,0,1,49.32-62.227,63.459,63.459,0,0,1,14.577-1.67,63.608,63.608,0,0,1,32.364,8.79" fill="none" stroke="#fff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
+                        <path id="Path_496" data-name="Path 496" d="M-128.888,1139.181a64.38,64.38,0,0,1,4.816,4.5" fill="none" stroke="#fff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
+                    </g>
+                </g>
+                <path id="Path_511" data-name="Path 511" d="M125.734,119.557s-36.939-43.773-83.452,0" transform="translate(0 -0.971)" fill="none" stroke="#fff" strokeWidth="3" />
+                <g id="Ellipse_121" data-name="Ellipse 121" transform="translate(67 49)" fill="none" stroke="#fff" strokeWidth="3">
+                    <circle cx="17" cy="17" r="17" stroke="none" />
+                    <circle cx="17" cy="17" r="15.5" fill="none" />
+                </g>
+            </g>
+        </svg>
+    )
+}
+
 export function Information() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">

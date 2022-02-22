@@ -1,19 +1,18 @@
 @import "../../styles/globalConfig";
 
-.closed{
-    display: none;
+.closed {
+  display: none;
 }
 .container {
   position: fixed;
   top: 0;
-  bottom: 0;
+  bottom: -20%;
   right: 0;
   left: 0;
   z-index: 50;
 }
 .menu {
-  //   width: 300px;
-  height: 100vh;
+  height: 100%;
   background-color: #fff;
   z-index: 100;
 }
@@ -41,6 +40,11 @@
   font-size: 10px;
   line-height: 1;
   margin-top: 8px;
+}
+.completeProfile {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
 }
 .avatar {
   grid-row: 1 / span 2;
@@ -72,8 +76,8 @@
   align-items: center;
   column-gap: 10px;
   padding: 15px 0;
-  svg{
-      width: 26px;
-      height: 26px;
+  svg {
+    width: 26px;
+    height: 26px;
   }
 }
