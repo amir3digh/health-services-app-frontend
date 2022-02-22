@@ -135,7 +135,13 @@ export function Menu() {
         </svg>
     )
 }
-
+export function Back() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="14.199" height="25.023" viewBox="0 0 14.199 25.023">
+            <path id="chevron-back" d="M12.938,7.875,23.063,18,12.938,28.125" transform="translate(-10.552 -5.489)" fill="none" stroke="#f8f8f8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.375" />
+        </svg>
+    )
+}
 export function Mobile() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="27" height="40.5" viewBox="0 0 27 40.5">
@@ -232,3 +238,143 @@ export function Instagram() {
     )
 }
 
+export function FemaleAvatar() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="132" height="133.397" viewBox="0 0 132 133.397">
+            <defs>
+                <filter id="Ellipse_26" x="0" y="3.397" width="132" height="130" filterUnits="userSpaceOnUse">
+                    <feOffset dy="3" input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feFlood floodOpacity="0.161" />
+                    <feComposite operator="in" in2="blur" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+                <clipPath id="clip-path">
+                    <ellipse id="Ellipse_25" data-name="Ellipse 25" cx="57" cy="56" rx="57" ry="56" transform="translate(-0.213 0.336)" fill="#fff" stroke="#707070" strokeWidth="1" />
+                </clipPath>
+            </defs>
+            <g id="Group_137" data-name="Group 137" transform="translate(-18 -17.603)">
+                <g transform="matrix(1, 0, 0, 1, 18, 17.6)" filter="url(#Ellipse_26)">
+                    <ellipse id="Ellipse_26-2" data-name="Ellipse 26" cx="57" cy="56" rx="57" ry="56" transform="translate(9 9.4)" fill="#fff" />
+                </g>
+                <g id="Mask_Group_8" data-name="Mask Group 8" transform="translate(27.213 18.664)" clipPath="url(#clip-path)">
+                    <g id="Symbols" transform="translate(20.036 21.887)">
+                        <g id="Head_Front_Long" data-name="Head/Front/Long" transform="translate(0)">
+                            <path id="Hair-Back" d="M103.956,48.638c4.078,15.027,9.392,48.806,3.97,54.1H73.617q-.005-.091-.01-.182A25.44,25.44,0,0,1,51,77.28V52.436A25.436,25.436,0,0,1,76.436,27H78.8A25.442,25.442,0,0,1,103.956,48.638Z" transform="translate(-34.437 -27)" fill="#191847" fillRule="evenodd" />
+                            <g id="Head" transform="translate(20.112 4.732)">
+                                <path id="Path_454" data-name="Path 454" d="M9.775,40.8C4.323,34.405.634,26.563,1.25,17.776,3.027-7.542,38.27-1.972,45.126,10.806S51.167,56,42.307,58.282c-3.533.911-11.061-1.32-18.722-5.938l4.809,34.02H0Z" transform="translate(0 0)" fill="#b28b67" fillRule="evenodd" />
+                            </g>
+                            <path id="Hair-Front" d="M74.562,68.076c1.308,14.052.784,30.1-3.115,33.909H37.139C35.227,68.773,53.7,81.634,53.7,50.363c1.152-1.125,2.24-2.239,3.317-3.2l-.038-.92Q65.892,28,79.592,28c13.7,0,18.024,6.375,21.706,11.787C98.545,49.234,87.86,50.635,78.367,56.523a6.507,6.507,0,1,0-4.1,11.56Q74.415,68.083,74.562,68.076Z" transform="translate(-37 -26.817)" fill="#191847" fillRule="evenodd" />
+                        </g>
+                    </g>
+                </g>
+                <g id="Group_107" data-name="Group 107" transform="translate(254.017 -1105.083)">
+                    <path id="Path_495" data-name="Path 495" d="M-117.367,1151.868a63.6,63.6,0,0,1,11.247,36.215,63.9,63.9,0,0,1-63.9,63.9,63.9,63.9,0,0,1-63.9-63.9,64,64,0,0,1,49.32-62.227,63.459,63.459,0,0,1,14.577-1.67,63.608,63.608,0,0,1,32.364,8.79" fill="none" stroke="#fff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
+                    <path id="Path_496" data-name="Path 496" d="M-128.888,1139.181a64.38,64.38,0,0,1,4.816,4.5" fill="none" stroke="#fff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
+                </g>
+            </g>
+        </svg>
+    )
+}
+
+export function MaleAvatar() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="132" height="133.397" viewBox="0 0 132 133.397">
+            <defs>
+                <filter id="Ellipse_26" x="0" y="3.397" width="132" height="130" filterUnits="userSpaceOnUse">
+                    <feOffset dy="3" input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feFlood floodOpacity="0.161" />
+                    <feComposite operator="in" in2="blur" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+            </defs>
+            <g id="Group_171" data-name="Group 171" transform="translate(-18 -17.603)">
+                <g transform="matrix(1, 0, 0, 1, 18, 17.6)" filter="url(#Ellipse_26)">
+                    <ellipse id="Ellipse_26-2" data-name="Ellipse 26" cx="57" cy="56" rx="57" ry="56" transform="translate(9 9.4)" fill="#fff" />
+                </g>
+                <g id="Group_107" data-name="Group 107" transform="translate(254.017 -1105.083)">
+                    <path id="Path_495" data-name="Path 495" d="M-117.367,1151.868a63.6,63.6,0,0,1,11.247,36.215,63.9,63.9,0,0,1-63.9,63.9,63.9,63.9,0,0,1-63.9-63.9,64,64,0,0,1,49.32-62.227,63.459,63.459,0,0,1,14.577-1.67,63.608,63.608,0,0,1,32.364,8.79" fill="none" stroke="#fff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
+                    <path id="Path_496" data-name="Path 496" d="M-128.888,1139.181a64.38,64.38,0,0,1,4.816,4.5" fill="none" stroke="#fff" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="3" />
+                </g>
+                <g id="Symbols" transform="translate(63.667 44.792)">
+                    <g id="Head_Front_Short-1" data-name="Head/Front/Short-1" transform="translate(0 0)">
+                        <g id="Head" transform="translate(0.128 4.203)">
+                            <path id="Path_436" data-name="Path 436" d="M9.551,39.869C4.224,33.617.619,25.955,1.222,17.369c1.736-24.738,36.172-19.3,42.87-6.81s5.9,44.156-2.755,46.388c-3.452.89-10.807-1.29-18.293-5.8l4.7,33.24H0Z" transform="translate(0 0)" fill="#b28b67" fillRule="evenodd" />
+                        </g>
+                        <path id="Hair" d="M85.874,43.936c-3.765,2.106-6.444,6.052-9.669,11.228a6.937,6.937,0,0,0-7.382,11.419c-1.6,2.265-3.4,4.632-5.464,7.073-7.691-4.614-13.411-18.063-6.068-31.046,6.318-26.005,42.12-9.864,49.008-14.25C107.8,37.8,102.947,45.407,85.874,43.936Z" transform="translate(-53.889 -27.364)" fill="#191847" fillRule="evenodd" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+    )
+}
+
+export function Information() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+            <g id="Ellipse_117" data-name="Ellipse 117" fill="none" stroke="#117c6f" strokeWidth="2">
+                <circle cx="12.5" cy="12.5" r="12.5" stroke="none" />
+                <circle cx="12.5" cy="12.5" r="11.5" fill="none" />
+            </g>
+            <g id="Group_108" data-name="Group 108" transform="translate(12.5 7.143)">
+                <line id="Line_30" data-name="Line 30" y2="6" transform="translate(0.5 4.857)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeWidth="2" />
+                <line id="Line_31" data-name="Line 31" transform="translate(0.5 -0.143)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeWidth="2" />
+            </g>
+        </svg>
+    )
+}
+
+export function Rules() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="20.601" height="24.034" viewBox="0 0 20.601 24.034">
+            <path id="Path_499" data-name="Path 499" d="M14.8,26.284,9.5,23.457a9.427,9.427,0,0,1-5-8.332V3.967A1.718,1.718,0,0,1,6.217,2.25H23.384A1.718,1.718,0,0,1,25.1,3.967V15.125a9.427,9.427,0,0,1-5,8.332ZM6.217,3.967V15.125a7.712,7.712,0,0,0,4.091,6.817l4.492,2.4,4.492-2.4a7.712,7.712,0,0,0,4.091-6.818V3.967Z" transform="translate(-4.5 -2.25)" fill="#117c6f" />
+            <rect id="Rectangle_261" data-name="Rectangle 261" width="9.919" height="1.526" rx="0.763" transform="translate(5.341 6.867)" fill="#117c6f" />
+            <rect id="Rectangle_262" data-name="Rectangle 262" width="9.919" height="1.526" rx="0.763" transform="translate(5.341 11.445)" fill="#117c6f" />
+        </svg>
+
+    )
+}
+export function Privacy() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="21.376" height="23.986" viewBox="0 0 21.376 23.986">
+            <path id="Path_501" data-name="Path 501" d="M22.063,10.2V5.922c0-1.99-2.169-3.6-4.844-3.6s-4.844,1.613-4.844,3.6V10.2" transform="translate(-6.531 -1.32)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+            <path id="Path_502" data-name="Path 502" d="M9.656,14.625H23.22a2.722,2.722,0,0,1,2.906,2.489v9.127a2.722,2.722,0,0,1-2.906,2.489H9.656A2.722,2.722,0,0,1,6.75,26.241V17.114a2.722,2.722,0,0,1,2.906-2.489Z" transform="translate(-5.75 -5.744)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+        </svg>
+
+    )
+}
+export function Share() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 22 24">
+            <g id="Group_110" data-name="Group 110" transform="translate(-359 -345)">
+                <g id="Ellipse_118" data-name="Ellipse 118" transform="translate(373 345)" fill="none" stroke="#117c6f" strokeWidth="2">
+                    <circle cx="4" cy="4" r="4" stroke="none" />
+                    <circle cx="4" cy="4" r="3" fill="none" />
+                </g>
+                <g id="Ellipse_120" data-name="Ellipse 120" transform="translate(373 361)" fill="none" stroke="#117c6f" strokeWidth="2">
+                    <circle cx="4" cy="4" r="4" stroke="none" />
+                    <circle cx="4" cy="4" r="3" fill="none" />
+                </g>
+                <g id="Ellipse_119" data-name="Ellipse 119" transform="translate(359 353)" fill="none" stroke="#117c6f" strokeWidth="2">
+                    <circle cx="4" cy="4" r="4" stroke="none" />
+                    <circle cx="4" cy="4" r="3" fill="none" />
+                </g>
+                <line id="Line_32" data-name="Line 32" x1="8.912" y2="5.142" transform="translate(365.513 350.49)" fill="none" stroke="#117c6f" strokeWidth="2" />
+                <line id="Line_33" data-name="Line 33" x2="8.227" y2="4.799" transform="translate(365.513 359.059)" fill="none" stroke="#117c6f" strokeWidth="2" />
+            </g>
+        </svg>
+
+    )
+}
+export function Exit() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24.631" height="21.923" viewBox="0 0 24.631 21.923">
+            <g id="Group_109" data-name="Group 109" transform="translate(55.8 -113.84)">
+                <path id="Path_509" data-name="Path 509" d="M-37.652,131.7a9.933,9.933,0,0,1-7.186,3.063A9.962,9.962,0,0,1-54.8,124.8a9.962,9.962,0,0,1,9.962-9.962,9.93,9.93,0,0,1,7.042,2.916" fill="none" stroke="#117c6f" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2" />
+                <line id="Line_34" data-name="Line 34" x1="15.143" transform="translate(-47.613 124.802)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                <path id="Path_510" data-name="Path 510" d="M-32.991,122.86l4.405,3.3-4.405,3.572" transform="translate(-3.583 -1.318)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+            </g>
+        </svg>
+    )
+}

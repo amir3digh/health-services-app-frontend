@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 100;
   > * {
     display: flex;
     align-items: center;
@@ -19,6 +19,9 @@
 .right {
   grid-column: 1 / span 1;
   justify-content: start;
+  button {
+    line-height: 0;
+  }
 }
 .middle {
   grid-column: 2 / span 2;
@@ -30,7 +33,7 @@
   direction: ltr;
   justify-content: space-between;
   grid-column: 4 / span 1;
-  a{
+  a {
     display: flex;
   }
 }
