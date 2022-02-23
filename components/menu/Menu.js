@@ -16,9 +16,6 @@ export default function Menu(props) {
     const lastName = user && user.last_name;
     const mobile = user ? user.mobile : '';
 
-    useEffect(() => {
-        console.log(closed);
-    })
     const CompleteProfile = () => {
         return (
             <Link href={'/profile'}>
