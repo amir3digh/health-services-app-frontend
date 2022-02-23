@@ -32,7 +32,7 @@ export default function Map(props) {
             map.locate();
             map.on('locationfound', e => {
                 console.log(e.latlng);
-                // map.flyTo(e.latlng, map.getZoom());
+                map.flyTo(e.latlng, map.getZoom());
             });
             map.on('locationerror', e => {
                 alert('error');
