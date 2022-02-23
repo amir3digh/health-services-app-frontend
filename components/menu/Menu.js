@@ -6,6 +6,7 @@ import {
     MaleAvatar, Privacy, Rules, Share, UnknownAvatar
 }
     from '../microComponents/icons/Icons';
+import { useEffect } from 'react';
 
 export default function Menu(props) {
     const handler = props.handler;
@@ -14,6 +15,10 @@ export default function Menu(props) {
     const firstName = user && user.first_name;
     const lastName = user && user.last_name;
     const mobile = user ? user.mobile : '';
+
+    useEffect(() => {
+        console.log(closed);
+    })
     const CompleteProfile = () => {
         return (
             <Link href={'/profile'}>
@@ -77,7 +82,7 @@ export default function Menu(props) {
     }
 
     return (
-        <div className={styles.container + ((closed) ? (' ' + styles.closed) : '')}>
+        <div className={styles.container} style={{ display: closed ? 'none' : 'flex' }}>
             <Cover
                 handler={handler}
             />
