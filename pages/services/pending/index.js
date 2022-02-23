@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Header from "../../../components/header/Header";
-import styles from './Pending.module.scss';
+import styles from '../../../styles/Profile.module.scss';
 import { makeInvoiceRequest, pendingRequest, userProfileRequest } from '../../../lib/requests';
 import PendingItem from "../../../components/requests/PendingItem";
 import Router from "next/router";
@@ -12,6 +12,10 @@ import { Female, Male } from "../../../components/microComponents/icons/Icons";
 
 export default function Pending() {
     const title = 'ثبت نهایی درخواست';
+
+    const Map = dynamic(() => import("../../../components/map/Map"), {
+        ssr: false
+    });
 
     const [pageState, setPageState] = useState('setInfo');
 
@@ -29,20 +33,19 @@ export default function Pending() {
             const response = await userProfileRequest();
             if (response.status === 'ok') {
                 const user = response.result.user;
+                const location = JSON.parse(user.address.location);
                 setFirstName(user.first_name || (''));
                 setLastName(user.last_name || (''));
                 setNationalCode(user.national_code || (''));
                 setMobile(user.mobile || (''));
+                location && (setLocation(location));
+                setAddress(user.address.description);
             }
         }
         getUser();
         updatePending();
         setPageState('setInfo');
     }, []);
-
-    const Map = dynamic(() => import("../../../components/map/Map"), {
-        ssr: false
-    });
 
     const [pending, setPending] = useState([]);
     const [priceSum, setPriceSum] = useState(0);
@@ -88,12 +91,13 @@ export default function Pending() {
             description,
             mobile,
             address,
-            location: location.lat + ',' + location.lng
+            location: location.lat ?
+                JSON.stringify([location.lat, location.lng]) :
+                JSON.stringify(location)
         }
         const response = await makeInvoiceRequest(factors);
         if (response.status === 'ok') {
             const paymentLink = response.result.transaction.link;
-            console.log(paymentLink);
             Router.push(paymentLink);
         }
     }

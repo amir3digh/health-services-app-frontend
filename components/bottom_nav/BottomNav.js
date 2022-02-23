@@ -30,7 +30,7 @@ export default function BottomNav() {
                     </span>
                 </a>
             </Link>
-            <Link href={'/profile'}>
+            <Link href={'/users/profile'}>
                 <a className={styles.navItems}>
                     <Profile />
                     <span>
