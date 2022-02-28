@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../../styles/Popup.module.scss';
 import Loading from '../loading/Loading';
+import Cover from '../microComponents/cover/Cover';
 
 export default function Popup(props) {
     const opened = props.opened;
@@ -18,6 +19,7 @@ export default function Popup(props) {
     return (
         opened ?
           <div className={styles.container}>
+            <Cover />
             <form className={styles.form} onSubmit={submit}>
               <div className={styles.detail}>
                 <Loading onload={true} />
