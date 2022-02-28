@@ -3,6 +3,7 @@ import styles from './RadioBtn.module.scss';
 export default function RadioBtn(props) {
     const checkLabel = props.checkLabel;
     const name = props.name;
+    const error = props.error;
     const radioClick = (event) => {
         event.preventDefault();
         const id = event.currentTarget.id;
@@ -24,11 +25,15 @@ export default function RadioBtn(props) {
             </g>
         </svg>
     );
+    const filled = (
+        <div className={styles.fill}></div>
+    )
     return (
         <button id={name} onClick={radioClick} className={styles.container}>
             {checkLabel ? <span className={styles.checkLabel}>{checkLabel}</span> : ''}
-            <div className={styles.checkContainer}>
+            <div className={styles.checkContainer + (error ? (' wrongInput') : '') + (props.big ? (' ' + styles.big) : '')}>
                 {props.checked ? check : ''}
+                {props.filled ? filled : ''}
             </div>
         </button>
     )

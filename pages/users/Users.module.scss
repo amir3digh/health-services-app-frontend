@@ -12,6 +12,7 @@
 }
 .logo {
   grid-column: 2 / span 2;
+  margin-bottom: 10px;
 }
 .registerForm,
 .verifyForm {
@@ -26,28 +27,41 @@
 .title {
   width: 100%;
   font-size: 14px;
-  line-height: 3;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin-bottom: 12px;
+  }
+}
+.error {
+  font-size: 10px;
+  color: #6d6d6d;
 }
 .userInput {
   height: 48px;
   display: flex;
   align-items: center;
   column-gap: 16px;
-  box-shadow: inset 0px 3px 4px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: inset 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
   border-radius: 24px;
   padding: 0 20px;
   input {
+    width: 70%;
     border: none;
     font-size: 15px;
     direction: ltr;
     text-align: left;
     font-family: iransans;
     flex-grow: 1;
-    background-color: transparent!important;
+    background-color: transparent !important;
   }
   input[type="text"]:focus {
     background-color: transparent;
     outline: none;
+  }
+  svg {
+    flex-shrink: 0;
   }
 }
 .verifyCode {
@@ -77,16 +91,17 @@
   }
 }
 .submit {
-  width: 100%;
+  display: flex;
+  justify-content: center;
   border: none;
   color: #fff;
   font-family: iransans;
   font-size: 15px;
-  line-height: 1;
   border-radius: 24px;
-  padding: 16px 0;
+  padding: 10px 0;
   background-color: $color1;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  margin: auto;
 }
 .rules {
   display: flex;

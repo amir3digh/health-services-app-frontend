@@ -18,7 +18,7 @@ a {
   box-sizing: border-box;
 }
 
-button{
+button {
   border: none;
   font-family: iransans;
   background-color: transparent;
@@ -53,18 +53,22 @@ main {
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
   border-radius: 36px;
   margin-bottom: 24px;
-  .title{
+  .title {
     color: #262626;
     font-size: 15px;
   }
-  .subtitle{
+  .subtitle {
     font-size: 12px;
     color: #5b5b5b;
   }
-  .button{
+  .button {
     font-size: 11px;
     display: flex;
     align-items: center;
     column-gap: 6px;
   }
+}
+
+.wrongInput {
+  border: #b40000 solid 1px;
 }
