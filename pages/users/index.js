@@ -65,6 +65,7 @@ export default function Register() {
 
     const submitVerifyCode = async (token) => {
         setLoading(true);
+        setError([]);
         const smsToken = {
             ...verifyToken,
             token: token
@@ -72,9 +73,11 @@ export default function Register() {
         const response = await verifySmsRequest(smsToken);
         setLoading(false);
         if (response === 'wrongToken') {
+            setError([{ id: 4, message: 'کد وارد شده صحیح نمی باشد.' }]);
             return;
         }
         if (response === 'unknown') {
+            setError([{ id: 3, message: 'خطای سرور. لطفا دوباره تلاش کنید.' }]);
             return;
         }
         setCookies('jwtToken', response.jwt, { maxAge: 60 * 60 * 24 * 10 });
