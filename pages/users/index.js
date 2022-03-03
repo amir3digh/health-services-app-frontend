@@ -32,7 +32,6 @@ export default function Register() {
 
     const [verifyCode, setVerifyCode] = useState();
     const [verifyToken, setVerifyToken] = useState({});
-    const [authAction, setAuthAction] = useState('register');
 
     const verifyCodeChange = (event) => {
         const value = event.split('');
@@ -51,11 +50,7 @@ export default function Register() {
         }
         setError([]);
         setLoading(true);
-        let response = await sendSmsRequest(phoneNumber.value, 'register');
-        if (response === 'isRegistered') {
-            response = await sendSmsRequest(phoneNumber.value, 'login');
-            setAuthAction('login');
-        }
+        let response = await sendSmsRequest(phoneNumber.value);
         setLoading(false);
         if (response === 'unknownError') {
             setError([{ id: 3, message: 'خطای سرور. لطفا دوباره تلاش کنید.' }]);
@@ -74,8 +69,7 @@ export default function Register() {
             ...verifyToken,
             token: token
         }
-        const response = await verifySmsRequest(smsToken, authAction);
-        console.log(response);
+        const response = await verifySmsRequest(smsToken);
         setLoading(false);
         if (response === 'wrongToken') {
             return;
