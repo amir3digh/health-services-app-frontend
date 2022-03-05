@@ -111,7 +111,7 @@ export function Request() {
 }
 export function Logo() {
     return (
-        <Link href='/'>
+        <Link href='/services'>
             <a>
                 <Image
                     src='/icons/logo.png'

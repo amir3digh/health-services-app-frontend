@@ -5,7 +5,7 @@ import styles from './BottomNav.module.scss'
 export default function BottomNav() {
     return (
         <div className={styles.container + ' global-container'}>
-            <Link href='/'>
+            <Link href='/services'>
                 <a className={styles.navItems}>
                     <Home />
                     <span>
