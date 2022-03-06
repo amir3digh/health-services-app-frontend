@@ -6,8 +6,11 @@ import { sendSmsRequest, verifySmsRequest } from '../../lib/auth';
 import ReactCodeInput from 'react-verification-code-input';
 import { setCookies } from 'cookies-next';
 import Router from 'next/router';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
+export function getStaticProps() {
+    return { props: { title: 'ثبت نام / ورود', layout: { header: false, bottomNav: false } } }
+}
 
 export default function Register() {
 
@@ -87,29 +90,35 @@ export default function Register() {
     const SubmitButton = (props) => {
         const onClick = props.onClick;
         const label = props.label;
+        const name = props.name;
+
+        const variants = {
+            loading: { width: '20%' },
+            loaded: { width: '100%' }
+        }
+        // const controls = useAnimation();
+        // loading ? controls.start('loading') : controls.start('loaded');
 
         return (
             <motion.button
                 className={styles.submit}
                 onClick={onClick}
-                type='submit'
-                animate={loading && 'loading'}
                 initial='loaded'
-                variants={{
-                    loading: { width: '20%' },
-                    loaded: { width: '100%' }
-                }}
-                transition={{ ease: 'easeInOut' }}
+                type='submit'
+                animate={loading ? 'loading' : 'loaded'}
+                variants={variants}
+                transition={{ ease: 'easeInOut', duration: 0.4 }}
                 disabled={loading}
+                key={name}
             >
                 {loading ?
-                    <motion.div>
+                    <div>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" style={{ margin: 'auto', background: 'none', display: 'block', shapeRendering: 'auto' }} width="25px" height="25px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                             <circle cx="50" cy="50" fill="none" stroke="#ffffff" strokeWidth="10" r="35" strokeDasharray="164.93361431346415 56.97787143782138">
                                 <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
                             </circle>
                         </svg>
-                    </motion.div>
+                    </div>
                     :
                     <span>{label}</span>
                 }
@@ -150,6 +159,8 @@ export default function Register() {
                             <SubmitButton
                                 label='ارسال کد تایید'
                                 onClick={submitUser}
+                                name='login'
+                            // onClick={() => { setLoading(true); setTimeout(() => setLoading(false), 2000) }}
                             />
                             <div className={styles.rules}>
                                 <span>قوانین و مقررات برنامه را خوانده و قبول دارم *</span>
@@ -199,6 +210,7 @@ export default function Register() {
                             <SubmitButton
                                 label='اعتبارسنجی'
                                 onClick={submitVerifyCode}
+                                name='token'
                             />
                             <div className={styles.rules}>
                                 <button onClick={e => { e.preventDefault(); setPageState('inputPhoneNumber') }}>تغییر شماره تلفن</button>

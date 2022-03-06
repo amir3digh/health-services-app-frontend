@@ -7,6 +7,7 @@ import { pendingRequest, serviceDataRequest, servicesRequest } from "../../lib/r
 import { useEffect, useState } from 'react';
 import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSubmit";
 import Prescription from "../../components/services/drugPopup/Prescription";
+import Layout from "../../components/layout/Layout";
 
 export async function getStaticPaths() {
     let data = await servicesRequest();
@@ -33,6 +34,8 @@ export async function getStaticProps({ params }) {
         props: {
             slug,
             pageData,
+            layout: { header: true, bottomNav: false },
+            title: pageData.title
         }
     }
 }
@@ -94,14 +97,7 @@ export default function Service(props) {
     }
 
     return (
-        <main className="container">
-            <Head>
-                <title>{title}</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Header
-                pageTitle={title}
-            />
+        <Layout name='service'>
             <ServicesHead
                 pageTitle={title}
                 popupHandler={popupHandler}
@@ -135,7 +131,6 @@ export default function Service(props) {
                     />
             )}
             <ServicesSubmit />
-
-        </main>
+        </Layout>
     )
 }

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Notify.module.scss";
@@ -9,10 +8,6 @@ export default function Notify(props) {
 
     return (
         <div className={styles.container}>
-            <Head>
-                <title>{title}</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <div className='global-container'>
                 <div className={styles.logo}>
                     <Image

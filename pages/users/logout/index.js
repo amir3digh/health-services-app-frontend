@@ -3,6 +3,9 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Notify from "../../../components/microComponents/notify/Notify";
 
+export function getStaticProps() {
+    return { props: { title: 'خروج', layout: { header: false, bottomNav: false } } }
+}
 
 export default function Logout() {
     useEffect(() => {

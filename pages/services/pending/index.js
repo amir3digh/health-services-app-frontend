@@ -9,6 +9,11 @@ import Router from "next/router";
 import Popup from "../../../components/popup/Popup";
 import InputField from "../../../components/microComponents/inputField/InputField";
 import { Female, Male } from "../../../components/microComponents/icons/Icons";
+import Layout from "../../../components/layout/Layout";
+
+export function getStaticProps() {
+    return { props: { title: 'ثبت نهایی درخواست', layout: { header: true, bottomNav: false } } }
+}
 
 export default function Pending() {
     const title = 'ثبت نهایی درخواست';
@@ -33,13 +38,13 @@ export default function Pending() {
             const response = await userProfileRequest();
             if (response.status === 'ok') {
                 const user = response.result.user;
-                const location = JSON.parse(user.address.location);
+                const location = JSON.parse(user.address && user.address.location);
                 setFirstName(user.first_name || (''));
                 setLastName(user.last_name || (''));
                 setNationalCode(user.national_code || (''));
                 setMobile(user.mobile || (''));
                 location && (setLocation(location));
-                setAddress(user.address.description);
+                setAddress(user.address && user.address.description);
             }
         }
         getUser();
@@ -104,15 +109,8 @@ export default function Pending() {
 
     return (
         <div>
-            <Head>
-                <title>{title}</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Header
-                pageTitle={title}
-            />
             {pageState === 'setInfo' && (
-                <main>
+                <Layout name='pending_setInfo'>
                     <div className="global-container">
                         <div className={styles.title}>لطفا اطلاعات مورد نیاز جهت تکمیل درخواست را وارد نمایید</div>
                         <div className={styles.description}>کارشناسان ما در اولین فرصت درخواست شما را پیگیری خواهند کرد</div>
@@ -173,7 +171,7 @@ export default function Pending() {
                         />
                     </div>
                     <button onClick={() => setPageState('pendingItems')} className={styles.togglePage}>ثبت و مشاهده لیست خدمات درخواستی</button>
-                </main>
+                </Layout>
             )}
             {pageState === 'location' && (
                 <div>
@@ -190,7 +188,7 @@ export default function Pending() {
                 </div>
             )}
             {pageState === 'pendingItems' && (
-                <main>
+                <Layout name='pending_setInfo'>
                     <div className={'global-container'}>
                         <div className={styles.description}>
                             کاربر گرامی پس از ثبت نهایی درخواست شما، کارشناسان ما در اولین فرصت با شما تماس خواهند گرفت.
@@ -227,7 +225,7 @@ export default function Pending() {
                         opened={popup === 'opened'}
                         setPopup={setPopup}
                     />
-                </main>
+                </Layout>
             )}
         </div>
     )

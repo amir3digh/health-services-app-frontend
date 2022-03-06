@@ -7,6 +7,11 @@ import ServicesDrug from "../../components/services/servicesItems/ServicesDrug";
 import { useEffect, useState } from "react";
 import Prescription from "../../components/services/drugPopup/Prescription";
 import Product from "../../components/services/drugPopup/Product";
+import Layout from "../../components/layout/Layout";
+
+export function getStaticProps() {
+    return { props: { title: 'دریافت نسخه دارو درب منزل', layout: { header: true, bottomNav: false } } }
+}
 
 export default function Drug() {
     const title = 'دریافت نسخه دارو درب منزل';
@@ -66,9 +71,9 @@ export default function Drug() {
     const [product, setProduct] = useState();
     useEffect(() => {
         const productRequest = async (action) => {
-            if(product) {
+            if (product) {
                 const response = await pendingRequest(55, product, action);
-                if(response.status === 'ok'){
+                if (response.status === 'ok') {
                     await updatePending();
                     setServerSync(true);
                     setPopup('closed');
@@ -88,13 +93,7 @@ export default function Drug() {
     }
 
     return (
-        <main>
-            <Head>
-                <title>{title}</title>
-            </Head>
-            <Header
-                pageTitle={title}
-            />
+        <Layout name='drug'>
             <div className={headStyles.container}>
                 <div className={headStyles.detailsContainer + ' global-container'}>
                     <div className={headStyles.title}>{title}</div>
@@ -137,6 +136,6 @@ export default function Drug() {
                 setServerSync={setServerSync}
             />
             <ServicesSubmit />
-        </main>
+        </Layout>
     )
 }

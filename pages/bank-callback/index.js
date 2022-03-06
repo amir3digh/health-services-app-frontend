@@ -1,17 +1,17 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Notify from "../../components/microComponents/notify/Notify";
 import { paymentVerificationRequest } from "../../lib/requests";
-import styles from './Bank.module.scss';
+
+export function getStaticProps() {
+    return { props: { title: 'دکترخونه - پرداخت', layout: { header: false, bottomNav: false } } }
+}
 
 export default function BankCallback() {
     const title = 'دکترخونه - پرداخت';
 
     const [loading, setLoading] = useState(true);
-    const [message, setMessage] = useState({ summary: '', detail: '' })
+    const [message, setMessage] = useState({ summary: '', detail: '' });
 
     const router = useRouter();
 
