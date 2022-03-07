@@ -1,5 +1,3 @@
-import Head from "next/head";
-import Header from "../../components/header/Header";
 import ServicesHead from '../../components/services/servicesHead/ServicesHead';
 import ServicesChildren from '../../components/services/servicesItems/ServicesChildren';
 import ServicesParent from "../../components/services/servicesItems/ServicesParent";
