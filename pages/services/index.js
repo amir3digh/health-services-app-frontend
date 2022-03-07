@@ -1,8 +1,10 @@
 import Image from 'next/image'
-import styles from '../../styles/Services.module.scss'
+// import styles from '../../styles/Services.module.scss'
 import Link from 'next/link'
 import { servicesRequest } from '../../lib/requests'
 import Layout from '../../components/layout/Layout'
+
+import { className, styles } from '../../styles/Services.styles'
 
 export async function getStaticProps() {
     const response = await servicesRequest();
@@ -19,11 +21,12 @@ export async function getStaticProps() {
 }
 
 export default function Services({ servicesData }) {
+    console.log(styles);
     return (
         <Layout name='services'>
-            <section className={styles.banner}>
-                <div className={styles.bannerTitle}>دکتر خونه</div>
-                <div className={styles.bannerImg}>
+            <section className={`${className} banner`}>
+                <div className={`${className} bannerTitle`}>دکتر خونه</div>
+                <div className={`${className} bannerImg`}>
                     <Image
                         width={397.72}
                         height={162.25}
@@ -38,12 +41,12 @@ export default function Services({ servicesData }) {
                     const slug = el.slug;
                     return (
                         <Link href={'/services' + '/' + el.slug} key={el.id}>
-                            <a className={small ? styles.servicesItemSmall : styles.servicesItemBig}>
-                                <div className={styles.link}>
-                                    {small ? <div className={styles.fixTitle}>خدمات</div> : ''}
-                                    <div className={styles.serviceTitle}>{el.title}</div>
+                            <a className={small ? `${className} servicesItemSmall` : `${className} servicesItemBig`}>
+                                <div className={`${className} link`}>
+                                    {small ? <div className={`${className} fixTitle`}>خدمات</div> : ''}
+                                    <div className={`${className} serviceTitle`}>{el.title}</div>
                                 </div>
-                                <div className={styles.serviceIcon}>
+                                <div className={`${className} serviceIcon`}>
                                     <Image
                                         width={60}
                                         height={60}
@@ -57,6 +60,7 @@ export default function Services({ servicesData }) {
                 }
                 )}
             </section>
+            {styles}
         </Layout>
     )
 }
