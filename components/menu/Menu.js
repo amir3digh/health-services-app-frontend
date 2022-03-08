@@ -6,6 +6,7 @@ import {
     MaleAvatar, Privacy, Rules, Share, UnknownAvatar
 }
     from '../microComponents/icons/Icons';
+import Router from 'next/router';
 
 export default function Menu(props) {
     const handler = props.handler;
@@ -52,7 +53,7 @@ export default function Menu(props) {
         {
             id: 4,
             label: 'معرفی به دوستان',
-            href: '',
+            href: '/',
             icon: <Share />
         },
         {
@@ -67,13 +68,19 @@ export default function Menu(props) {
         const label = props.label;
         const icon = props.icon;
         const href = props.href;
+
+        const clickHandler = e => {
+            e.preventDefault();
+            handler('close');
+            Router.push(href);
+        }
         return (
-            <Link href={href}>
-                <a className={styles.item}>
-                    {icon}
-                    <span>{label}</span>
-                </a>
-            </Link>
+            // <Link href={href}>
+            <button onClick={clickHandler} className={styles.item}>
+                {icon}
+                <span>{label}</span>
+            </button>
+            /* </Link> */
         )
     }
 

@@ -3,13 +3,12 @@ import Router from 'next/router'
 import Link from 'next/link';
 import { getCookies } from 'cookies-next';
 import Image from 'next/image';
-// import styles from '../styles/Introduction.module.scss'
+import styles from './users/introduction/Introduction.module.scss'
 export function getStaticProps() {
   return { props: { title: 'دکترخونه', layout: { header: false, bottomNav: false } } }
 }
 export default function Home() {
   const token = getCookies('jwtToken');
-  // token.jwtToken ? Router.push('/services') : Router.push('/users/introduction')
   if (token.jwtToken) {
     Router.push('/services');
   }
@@ -21,7 +20,7 @@ export default function Home() {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <div className={styles.container}>
+      <div className={styles.container}>
         <div className={styles.top + ' global-container'}>
           <div>
             <Image
@@ -59,7 +58,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
