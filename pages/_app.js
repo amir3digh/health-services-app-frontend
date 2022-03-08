@@ -1,5 +1,6 @@
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
+import Image from 'next/image'
 import BottomNav from '../components/bottom_nav/BottomNav'
 import Header from '../components/header/Header'
 import '../styles/global.scss'
@@ -15,6 +16,13 @@ function MyApp({ Component, pageProps }) {
         <title>{pageTitle}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className='background'>
+        <Image
+          src='/images/background.jpg'
+          alt='page background'
+          layout='fill'
+        />
+      </div>
       {layout.header && <Header pageTitle={pageTitle} />}
       <AnimatePresence
         exitBeforeEnter
