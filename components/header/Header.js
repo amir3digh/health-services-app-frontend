@@ -4,13 +4,18 @@ import Menu from '../menu/Menu';
 import Cover from '../microComponents/cover/Cover';
 import { useState, useEffect } from 'react';
 import { userProfileRequest } from '../../lib/requests.js'
+import { useAnimation } from 'framer-motion';
 
 export default function Header(props) {
 
     const [menu, setMenu] = useState({ closed: true });
-    const menuHandler = (action) => {
-        action === 'close' && setMenu({ closed: true });
+    const menuControls = useAnimation();
+
+    const menuHandler = async (action) => {
+        const animationState = ((action === 'close') && ('hidden')) || ((action === 'open') && ('visible'));
         action === 'open' && setMenu({ closed: false });
+        await menuControls.start(animationState);
+        action === 'close' && setMenu({ closed: true });
     }
 
     const [user, setUser] = useState();
@@ -30,6 +35,7 @@ export default function Header(props) {
                 closed={menu.closed}
                 handler={menuHandler}
                 user={user}
+                menuControls={menuControls}
             />
             <div className={styles.right}>
                 <button onClick={() => menuHandler('open')}>

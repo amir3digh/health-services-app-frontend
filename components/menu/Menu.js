@@ -7,10 +7,12 @@ import {
 }
     from '../microComponents/icons/Icons';
 import Router from 'next/router';
+import { motion } from 'framer-motion';
 
 export default function Menu(props) {
     const handler = props.handler;
     const closed = props.closed;
+    const menuControls = props.menuControls;
     const user = props.user;
     const firstName = user && user.first_name;
     const lastName = user && user.last_name;
@@ -75,21 +77,31 @@ export default function Menu(props) {
             Router.push(href);
         }
         return (
-            // <Link href={href}>
             <button onClick={clickHandler} className={styles.item}>
                 {icon}
                 <span>{label}</span>
             </button>
-            /* </Link> */
         )
     }
-
     return (
-        <div className={styles.container} style={{ display: closed ? 'none' : 'flex' }}>
+        <div className={styles.container}
+            style={{ display: closed ? 'none' : 'flex' }}
+        >
             <Cover
                 handler={handler}
+                menuControls={menuControls}
+                closed={closed}
             />
-            <div className={styles.menu}>
+            <motion.div
+                className={styles.menu}
+                initial='hidden'
+                animate={menuControls}
+                variants={{
+                    visible: { x: 0 },
+                    hidden: { x: "100%" }
+                }}
+                transition={{ type: 'linear' }}
+            >
                 <div className={styles.head}>
                     <div className={styles.detail}>
                         <div className={styles.name}>{name.length > 20 ? name.slice(0, 17) + '...' : name}</div>
@@ -115,7 +127,7 @@ export default function Menu(props) {
                     }
                     )}
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }
