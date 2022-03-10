@@ -459,3 +459,35 @@ export function Male() {
         </svg>
     )
 }
+
+export function Support() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="54" height="54" viewBox="0 0 54 54">
+            <defs>
+                <filter id="Ellipse_140" x="0" y="0" width="54" height="54" filterUnits="userSpaceOnUse">
+                    <feOffset dy="3" input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feFlood floodOpacity="0.161" />
+                    <feComposite operator="in" in2="blur" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+                <filter id="phone" x="15.47" y="14.806" width="22.394" height="22.388" filterUnits="userSpaceOnUse">
+                    <feOffset dy="2" input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="0.75" result="blur-2" />
+                    <feFlood floodOpacity="0.161" />
+                    <feComposite operator="in" in2="blur-2" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+            </defs>
+            <g id="Component_43_3" data-name="Component 43 – 3" transform="translate(5 2)">
+                <g transform="matrix(1, 0, 0, 1, -5, -2)" filter="url(#Ellipse_140)">
+                    <circle id="Ellipse_140-2" data-name="Ellipse 140" cx="18" cy="18" r="18" transform="translate(9 6)" fill="#117c6f" />
+                </g>
+                <circle id="Ellipse_141" data-name="Ellipse 141" cx="22" cy="22" r="22" fill="none" stroke="#107a6d" strokeWidth="2" />
+                <g transform="matrix(1, 0, 0, 1, -5, -2)" filter="url(#phone)">
+                    <path id="phone-2" data-name="phone" d="M19.195,21.263h-.117C5.558,20.485,3.639,9.078,3.371,5.6a2.064,2.064,0,0,1,1.9-2.222H9.061a1.376,1.376,0,0,1,1.28.867l1.045,2.573a1.376,1.376,0,0,1-.3,1.486L9.618,9.78a6.446,6.446,0,0,0,5.215,5.229l1.493-1.479a1.376,1.376,0,0,1,1.493-.282l2.594,1.039a1.376,1.376,0,0,1,.847,1.279V19.2A2.064,2.064,0,0,1,19.195,21.263ZM5.435,4.751a.688.688,0,0,0-.688.688v.055c.317,4.073,2.346,13.7,14.407,14.393a.688.688,0,0,0,.73-.646V15.566L17.29,14.527l-1.975,1.961-.33-.042c-5.985-.75-6.8-6.736-6.8-6.8l-.042-.33L10.1,7.344,9.067,4.751Z" transform="translate(14.36 11.68)" fill="#fff" />
+                </g>
+            </g>
+        </svg>
+    )
+}

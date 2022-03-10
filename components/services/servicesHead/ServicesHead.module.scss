@@ -1,8 +1,14 @@
 .container {
+  position: relative;
   margin-bottom: 24px;
   > * {
     margin-bottom: 16px;
   }
+}
+.supportIcon {
+  position: absolute;
+  top: -10px;
+  left: 25px;
 }
 .detailsContainer {
   > * {

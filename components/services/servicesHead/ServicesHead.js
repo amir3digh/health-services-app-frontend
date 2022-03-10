@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Support } from '../../microComponents/icons/Icons';
 import RadioBtn from '../../microComponents/radioButton/RadioBtn';
 import styles from './ServicesHead.module.scss';
+import Link from 'next/link';
 
 export default function ServicesHead(props) {
     const prescriptionType = props.prescriptionType;
@@ -17,6 +19,13 @@ export default function ServicesHead(props) {
     }
     return (
         <div className={styles.container}>
+            <div className={styles.supportIcon}>
+                <Link href='tel:09121234567'>
+                    <a>
+                        <Support />
+                    </a>
+                </Link>
+            </div>
             <div className={styles.detailsContainer + ' global-container'}>
                 <div className={styles.title}>{props.pageTitle}</div>
                 <div className={styles.description}>از لیست زیر خدمات مورد نظر را انتخاب کنید</div>
