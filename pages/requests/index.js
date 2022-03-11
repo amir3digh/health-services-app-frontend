@@ -4,6 +4,8 @@ import { paidServicesRequest, pendingRequest } from '../../lib/requests';
 import styles from './RequestsPage.module.scss';
 import Link from 'next/link';
 import Layout from '../../components/layout/Layout';
+import Popup from '../../components/popup/Popup';
+import { useAnimation } from 'framer-motion';
 
 export function getStaticProps() {
     return { props: { title: 'درخواست ها', layout: { header: true, bottomNav: true } } }
@@ -32,13 +34,27 @@ export default function RequestPage() {
             setPaid(result);
         }
     }
-    const deletePending = async (serviceId, pendingServiceId) => {
+    const popupControls = useAnimation();
+    const [popup, setPopup] = useState({ opened: false });
+    const [deleteData, setDeleteData] = useState({});
+
+    const deleteHandler = (serviceId, pendingServiceId) => {
+        setDeleteData({ serviceId, pendingServiceId });
+        popupHandler('open');
+    }
+    const popupHandler = async (action) => {
+        const animationState = ((action === 'close') && ('hidden')) || ((action === 'open') && ('visible'));
+        console.log(animationState);
+        action === 'open' && setPopup({ opened: true });
+        await popupControls.start(animationState);
+        action === 'close' && setPopup({ opened: false });
+    }
+    const deletePending = async ({ serviceId, pendingServiceId }) => {
         const response = await pendingRequest(serviceId + '/' + pendingServiceId, null, 'delete');
         if (response.status === 'ok') {
             await updatePending();
         }
     }
-
 
     return (
         <Layout name='requests'>
@@ -59,7 +75,7 @@ export default function RequestPage() {
                         serviceId={el.service_id}
                         pendingServiceId={el.pending_service_id}
                         price={el.price}
-                        deletePending={deletePending}
+                        deletePending={deleteHandler}
                     />
                 ))}
                 {(show === 'pending' && pending.length) ?
@@ -77,6 +93,14 @@ export default function RequestPage() {
                     />
                 ))}
             </div>
+            <Popup
+                opened={popup.opened}
+                popupControls={popupControls}
+                handler={popupHandler}
+                popupAction={deletePending}
+                deleteData={deleteData}
+                message='آیا از حذف درخواست خود اطمینان دارید؟'
+            />
         </Layout>
     )
 }
