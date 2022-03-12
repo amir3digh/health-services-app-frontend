@@ -4,14 +4,22 @@ import Link from 'next/link';
 import { getCookies } from 'cookies-next';
 import Image from 'next/image';
 import styles from './users/introduction/Introduction.module.scss'
+import { useEffect } from 'react';
+import { serviceDataRequest, servicesRequest } from '../lib/requests';
 export function getStaticProps() {
   return { props: { title: 'دکترخونه', layout: { header: false, bottomNav: false } } }
 }
-export default function Home() {
+export default function Home({ loginHandler }) {
   const token = getCookies('jwtToken');
   if (token.jwtToken) {
     Router.push('/services');
   }
+  // useEffect(() => {
+  //   const response = serviceDataRequest('medical');
+  //   response.catch(error => {
+  //     error === 'wrongToken' && loginHandler('open');
+  //   });
+  // }, [])
   const title = 'دکترخونه';
 
   return (

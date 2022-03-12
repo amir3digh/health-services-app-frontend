@@ -22,6 +22,7 @@ export default function Popup(props) {
   return (
     <div className={styles.container} style={{ display: opened ? 'flex' : 'none' }}>
       <Cover
+        handler={handler}
         menuControls={popupControls}
       />
       <motion.form
@@ -36,10 +37,10 @@ export default function Popup(props) {
         onSubmit={submit}
       >
         <div className={styles.detail}>{message}</div>
-        <div className={styles.action}>
+        {action && <div className={styles.action}>
           <button className={styles.close} onClick={closeHandler} >خیر</button>
           <input className={styles.submit} type='submit' value='بله' />
-        </div>
+        </div>}
       </motion.form>
     </div>
   );
