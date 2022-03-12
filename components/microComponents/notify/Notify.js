@@ -22,7 +22,7 @@ export default function Notify(props) {
                     <div className={styles.detail}>{message.detail}</div>
                 </div>
             </div>
-            <div className='global-container'>
+            <div className={`global-container ${styles.backContainer}`}>
                 <Link href={'/'}>
                     <a className={styles.back}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="27.339" height="27.657" viewBox="0 0 27.339 27.657">

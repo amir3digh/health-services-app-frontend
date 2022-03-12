@@ -1,6 +1,5 @@
 import styles from './Menu.module.scss';
 import Cover from '../microComponents/cover/Cover';
-import Link from 'next/link';
 import {
     Back, Exit, FemaleAvatar, Information,
     MaleAvatar, Privacy, Rules, Share, UnknownAvatar
@@ -19,15 +18,18 @@ export default function Menu(props) {
     const mobile = user ? user.mobile : '';
 
     const CompleteProfile = () => {
+        const clickHandler = (e) => {
+            e.preventDefault();
+            handler('close');
+            Router.push('/users/profile');
+        }
         return (
-            <Link href={'/users/profile'}>
-                <a className={styles.completeProfile}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13.565" height="13.565" viewBox="0 0 13.565 13.565">
-                        <path id="icons8-edit" d="M16.07,5.01a2.491,2.491,0,0,0-1.767.729l-7.9,7.9a1.25,1.25,0,0,0-.318.541l-1.059,3.71a.536.536,0,0,0,.662.662L9.394,17.5h0a1.252,1.252,0,0,0,.54-.317l7.9-7.9A2.5,2.5,0,0,0,16.07,5.01Zm0,1.065A1.422,1.422,0,0,1,17.08,6.5h0a1.42,1.42,0,0,1,0,2.02l-.693.693-2.02-2.02.693-.693A1.424,1.424,0,0,1,16.07,6.075Zm-2.46,1.871,2.02,2.02L9.176,16.42a.181.181,0,0,1-.077.045l-2.783.8.8-2.783h0a.175.175,0,0,1,.045-.077Z" transform="translate(-5.001 -5.01)" fill="#fff" />
-                    </svg>
-                    <span>تکمیل پروفایل</span>
-                </a>
-            </Link>
+            <button onClick={clickHandler} className={styles.completeProfile}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="13.565" height="13.565" viewBox="0 0 13.565 13.565">
+                    <path id="icons8-edit" d="M16.07,5.01a2.491,2.491,0,0,0-1.767.729l-7.9,7.9a1.25,1.25,0,0,0-.318.541l-1.059,3.71a.536.536,0,0,0,.662.662L9.394,17.5h0a1.252,1.252,0,0,0,.54-.317l7.9-7.9A2.5,2.5,0,0,0,16.07,5.01Zm0,1.065A1.422,1.422,0,0,1,17.08,6.5h0a1.42,1.42,0,0,1,0,2.02l-.693.693-2.02-2.02.693-.693A1.424,1.424,0,0,1,16.07,6.075Zm-2.46,1.871,2.02,2.02L9.176,16.42a.181.181,0,0,1-.077.045l-2.783.8.8-2.783h0a.175.175,0,0,1,.045-.077Z" transform="translate(-5.001 -5.01)" fill="#fff" />
+                </svg>
+                <span>تکمیل پروفایل</span>
+            </button>
         )
     }
     const name = (firstName && lastName) ? (firstName + ' ' + lastName) : <CompleteProfile />;

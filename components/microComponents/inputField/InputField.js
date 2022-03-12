@@ -16,22 +16,24 @@ export default function InputField(props) {
         <div className={styles.container}>
             <label className={styles.label}>
                 <span className={styles.labelTxt}>{label}</span>
-                {textarea ? (
-                    <textarea
-                        type='text'
-                        className={styles.input}
-                        value={value}
-                        onChange={changeHandler}
-                        rows={3}
-                    />
-                ):
-                    <input
-                        type='text'
-                        className={styles.input}
-                        value={value}
-                        onChange={changeHandler}
-                    />
-                }
+                <div className={styles.inputContainer}>
+                    {textarea ? (
+                        <textarea
+                            type='text'
+                            className={styles.input}
+                            value={value}
+                            onChange={changeHandler}
+                            rows={3}
+                        />
+                    ) :
+                        <input
+                            type='text'
+                            className={styles.input}
+                            value={value}
+                            onChange={changeHandler}
+                        />
+                    }
+                </div>
             </label>
         </div>
     )

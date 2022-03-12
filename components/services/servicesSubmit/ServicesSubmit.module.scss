@@ -7,12 +7,13 @@
     right: 0;
     display: flex;
     justify-content: space-between;
+    grid-column-gap: 20px;
 }
 .button{
     background-color: $color1;
-    width: 196px;
+    width: 100%;
     color: #fff;
-    padding: 16px 20px;
+    padding: 16px 12px;
     font-size: 15px;
     line-height: 1;
     text-align: center;

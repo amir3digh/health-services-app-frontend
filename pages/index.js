@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { getCookies } from 'cookies-next';
 import Image from 'next/image';
 import styles from './users/introduction/Introduction.module.scss'
-import { useEffect } from 'react';
-import { serviceDataRequest, servicesRequest } from '../lib/requests';
+import { motion } from 'framer-motion';
 export function getStaticProps() {
   return { props: { title: 'دکترخونه', layout: { header: false, bottomNav: false } } }
 }
@@ -41,14 +40,14 @@ export default function Home({ loginHandler }) {
           <div className={styles.title}>درخواست آسان خدمات پزشکی در منزل</div>
         </div>
         <div className={styles.middle + ' global-container'}>
-          <div className={styles.mainImage}>
+          <motion.div className={styles.mainImage}>
             <Image
               width={714}
               height={590}
               src='/images/introduction_1.svg'
               alt='introduction image'
             />
-          </div>
+          </motion.div>
         </div>
         <div className={styles.bottom + ' global-container'}>
           <div className={styles.withLogin}>
