@@ -21,7 +21,6 @@ export async function getStaticProps() {
 }
 
 export default function Services({ servicesData }) {
-    console.log(styles);
     return (
         <Layout name='services'>
             <section className={`${className} banner`}>
