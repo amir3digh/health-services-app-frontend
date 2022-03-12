@@ -10,7 +10,7 @@ import Product from "../../components/services/drugPopup/Product";
 import Layout from "../../components/layout/Layout";
 
 export function getStaticProps() {
-    return { props: { title: 'دریافت نسخه دارو درب منزل', layout: { header: true, bottomNav: false } } }
+    return { props: { title: 'دریافت نسخه دارو', layout: { header: true, bottomNav: false } } }
 }
 
 export default function Drug() {
