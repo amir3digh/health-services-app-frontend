@@ -3,7 +3,7 @@ import ContactItems from '../../components/ContactItems/ContanctItems';
 import { Instagram, Mobile, Phone, WhatsApp } from '../../components/microComponents/icons/Icons';
 
 export function getStaticProps() {
-    return { props: { title: 'پشتیبانی', layout: { header: true, bottomNav: true } } }
+    return { props: { title: 'پشتیبانی', layout: { header: true,footer: true, bottomNav: true } } }
 }
 
 export default function RequestPage() {

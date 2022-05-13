@@ -1,11 +1,12 @@
-.container{
-    padding: 0 43px;
-}
+@import '../../../styles/responsive';
 
 .prescription {
-    grid-column: span 4;
-    width: 100%;
-    padding: 0 28px;
+    width: 85%;
+    margin: auto;
+    @include lg{
+      margin-right: 5px;
+    }
+    padding: 0px 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;

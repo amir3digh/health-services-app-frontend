@@ -11,7 +11,7 @@ import { Female, Male } from "../../../components/microComponents/icons/Icons";
 import Layout from "../../../components/layout/Layout";
 
 export function getStaticProps() {
-    return { props: { title: 'پروفایل', layout: { header: true, bottomNav: false } } }
+    return { props: { title: 'پروفایل', layout: { header: true, footer: true, bottomNav: false } } }
 }
 
 export default function Profile() {
@@ -78,7 +78,7 @@ export default function Profile() {
         <div>
             {pageState === 'setInfo' && (
                 <Layout name='profile_setInfo'>
-                    <div className="global-container">
+                    <div className={`${styles.container} global-container`}>
                         <InputField
                             label='نام'
                             value={firstName}
@@ -132,21 +132,21 @@ export default function Profile() {
                             </div>
                         </div>
                     </div>
-                    <button onClick={updateProfile} className={styles.togglePage}>ثبت</button>
+                    <div className="global-container">
+                        <button onClick={updateProfile} className={styles.togglePage}>ثبت</button>
+                    </div>
                 </Layout>
             )}
             {pageState === 'location' && (
-                <div>
-                    <div className={styles.mapContainer}>
-                        <div className={styles.mapTitle}>موقعیت مورد نظرتان را روی نقشه مشخص کنید</div>
-                        <Map
-                            location={location}
-                            setLocation={setTempLocation}
-                            setPageState={setPageState}
-                            submitStyle={styles.togglePage}
-                            locateStyle={styles.mapLocate}
-                        />
-                    </div>
+                <div className={styles.mapContainer}>
+                    <div className={styles.mapTitle}>موقعیت مورد نظرتان را روی نقشه مشخص کنید</div>
+                    <Map
+                        location={location}
+                        setLocation={setTempLocation}
+                        setPageState={setPageState}
+                        submitStyle={styles.togglePage}
+                        locateStyle={styles.mapLocate}
+                    />
                 </div>
             )}
         </div>

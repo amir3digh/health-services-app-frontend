@@ -6,7 +6,7 @@ import Image from 'next/image';
 import styles from './users/introduction/Introduction.module.scss'
 import { motion } from 'framer-motion';
 export function getStaticProps() {
-  return { props: { title: 'دکترخونه', layout: { header: false, bottomNav: false } } }
+  return { props: { title: 'دکترخونه', layout: { header: false,footer: false, bottomNav: false } } }
 }
 export default function Home({ loginHandler }) {
   const token = getCookies('jwtToken');

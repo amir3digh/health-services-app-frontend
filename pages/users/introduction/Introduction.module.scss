@@ -1,3 +1,4 @@
+@import '../../../styles/responsive';
 .container {
   display: flex;
   flex-direction: column;
@@ -22,6 +23,10 @@
 }
 .mainImage {
   grid-column: span 4;
+  @include lg{
+    grid-column: span 12;
+    max-width: 360px;
+  }
 }
 .bottom {
   width: 100%;
@@ -30,7 +35,6 @@
 .withoutLogin {
   grid-column: span 2;
   font-size: 12px;
-
   color: #fff;
   padding: 12px 0;
   width: 100%;
@@ -39,7 +43,13 @@
 }
 .withLogin {
   background-color: #117c6f;
+  @include lg{
+    grid-column: 4 / span 3;
+  }
 }
 .withoutLogin {
   background-color: #289c8e;
+  @include lg{
+    grid-column:  span 3;
+  }
 }

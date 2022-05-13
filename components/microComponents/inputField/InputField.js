@@ -13,7 +13,7 @@ export default function InputField(props) {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${textarea && styles.textArea}`}>
             <label className={styles.label}>
                 <span className={styles.labelTxt}>{label}</span>
                 <div className={styles.inputContainer}>

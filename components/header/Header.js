@@ -1,10 +1,12 @@
 import styles from './Header.module.scss';
-import * as Icons from '../microComponents/icons/Icons.js';
+import Image from 'next/image';
+import Link from 'next/link'
 import Menu from '../menu/Menu';
-import Cover from '../microComponents/cover/Cover';
 import { useState, useEffect } from 'react';
 import { userProfileRequest } from '../../lib/requests.js'
 import { useAnimation } from 'framer-motion';
+import ContactItems from '../ContactItems/ContanctItems';
+import { Logo, MenuIcon, NavRequest,Request } from '../microComponents/icons/Icons.js';
 
 export default function Header(props) {
 
@@ -30,25 +32,79 @@ export default function Header(props) {
     }, []);
 
     return (
-        <header className={styles.container + ' global-container'}>
+        <>
+            <div className={`${styles.topbar} global-container`}>
+                <div className={styles.logoContainer}>
+                    <Image
+                        width={70}
+                        height={90}
+                        src='/images/logo.png'
+                        alt='doctorkhooneh logo'
+                    />
+                </div>
+                <div className={`${styles.topbarCall} item-box`}>
+                    <Link href='tel:09121234567'>
+                        <a>تماس با ما</a>
+                    </Link>
+                </div>
+            </div>
+            <header className={`${styles.desktopHeader} global-container`}>
+                <div className={styles.right}>
+                    <button onClick={() => menuHandler('open')}>
+                        <MenuIcon />
+                    </button>
+                    <Link href=''>
+                        <a>
+                            خانه
+                        </a>
+                    </Link>
+                    <Link href=''>
+                        <a>
+                            خدمات پزشکی
+                        </a>
+                    </Link>
+                    <Link href=''>
+                        <a>
+                            درباره ما
+                        </a>
+                    </Link>
+                </div>
+                <div className={styles.left}>
+                    <Link href=''>
+                        <a>
+                            <NavRequest />
+                            <span>
+                                درخواست ها
+                            </span>
+                        </a>
+                    </Link>
+                    <Link href=''>
+                        <a>
+                            ورود / ثبت نام
+                        </a>
+                    </Link>
+                </div>
+            </header>
+            <header className={styles.mobileHeader + ' global-container'}>
+                <div className={styles.right}>
+                    <button onClick={() => menuHandler('open')}>
+                        <MenuIcon />
+                    </button>
+                </div>
+                <div className={styles.middle}>
+                    {props.pageTitle}
+                </div>
+                <div className={styles.left}>
+                    <Logo />
+                    {props.pageName !== 'requests' ? <Request /> : ''}
+                </div>
+            </header>
             <Menu
                 closed={menu.closed}
                 handler={menuHandler}
                 user={user}
                 menuControls={menuControls}
             />
-            <div className={styles.right}>
-                <button onClick={() => menuHandler('open')}>
-                    <Icons.Menu />
-                </button>
-            </div>
-            <div className={styles.middle}>
-                {props.pageTitle}
-            </div>
-            <div className={styles.left}>
-                <Icons.Logo />
-                {props.pageName !== 'requests' ? <Icons.Request /> : ''}
-            </div>
-        </header>
+        </>
     )
 }

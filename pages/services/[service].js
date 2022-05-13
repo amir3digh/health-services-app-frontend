@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import ServicesSubmit from "../../components/services/servicesSubmit/ServicesSubmit";
 import Prescription from "../../components/services/drugPopup/Prescription";
 import Layout from "../../components/layout/Layout";
+import ServicesContainer from '../../components/services/servicesItems/ServicesContainer';
 
 export async function getStaticPaths() {
     let data = await servicesRequest();
@@ -32,7 +33,7 @@ export async function getStaticProps({ params }) {
         props: {
             slug,
             pageData,
-            layout: { header: true, bottomNav: false },
+            layout: { header: true,footer: true, bottomNav: false },
             title: pageData.title
         }
     }
@@ -110,24 +111,28 @@ export default function Service(props) {
                 serverSync={serverSync}
                 setServerSync={setServerSync}
             />
-            {services.map(el =>
-                el.children.length
-                    ?
-                    <ServicesParent
-                        key={el.id}
-                        title={el.title}
-                        child={el.children}
-                        update={updateServices}
-                        prescription={pagePrescription}
-                    />
-                    :
-                    <ServicesChildren
-                        service={el}
-                        key={el.id}
-                        update={updateServices}
-                        prescription={pagePrescription}
-                    />
-            )}
+            <ServicesContainer>
+                {services.map(el =>
+                    el.children.length
+                        ?
+                        <ServicesParent
+                            key={el.id}
+                            title={el.title}
+                            child={el.children}
+                            update={updateServices}
+                            prescription={pagePrescription}
+                        />
+                        :
+                        // <div className='global-container'>
+                            <ServicesChildren
+                                service={el}
+                                key={el.id}
+                                update={updateServices}
+                                prescription={pagePrescription}
+                            />
+                        // </div>
+                )}
+            </ServicesContainer>
             <ServicesSubmit />
         </Layout>
     )

@@ -66,7 +66,9 @@ export default function Map(props) {
             />
             <LocationMarker />
             <CurrentLocation />
-            <button onClick={submitHandler} className={props.submitStyle}>ثبت موقعیت مکانی مشخص شده</button>
+            <div className="global-container">
+                <button onClick={submitHandler} className={props.submitStyle} style={{top: 420}}>ثبت موقعیت مکانی مشخص شده</button>
+            </div>
         </MapContainer>
     );
 }

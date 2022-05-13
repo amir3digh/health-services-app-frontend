@@ -1,4 +1,5 @@
 @import "../../styles/globalConfig";
+@import "../../styles/responsive";
 
 .container {
   position: fixed;
@@ -9,6 +10,10 @@
   font-size: 1rem;
   height: 72px;
   z-index: 10;
+  max-width: 100%!important;
+  @include lg{
+    display: none!important;
+  }
 }
 .navItems {
   font-size: 9px;

@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 import Prescription from "../../components/services/drugPopup/Prescription";
 import Product from "../../components/services/drugPopup/Product";
 import Layout from "../../components/layout/Layout";
+import ServicesContainer from "../../components/services/servicesItems/ServicesContainer";
 
 export function getStaticProps() {
-    return { props: { title: 'دریافت نسخه دارو', layout: { header: true, bottomNav: false } } }
+    return { props: { title: 'دریافت نسخه دارو', layout: { header: true, footer: true, bottomNav: false } } }
 }
 
 export default function Drug() {
@@ -100,27 +101,29 @@ export default function Drug() {
                     <div className={headStyles.description}>از لیست زیر خدمات مورد نظر را انتخاب کنید</div>
                 </div>
             </div>
-            <ServicesDrug
-                type='prescription'
-                title='دیافت دارو با نسخه'
-                addTitle='آپلود نسخه جدید'
-                onClick={prescriptionClick}
-                pending={pending}
-                deletePending={deletePending}
-            />
-            <ServicesDrug
-                type='product'
-                title={
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                        <span>دریافت دارو بدون نسخه</span>
-                        <span style={{ fontSize: 12 }}>و محصولات داروخانه ای</span>
-                    </div>
-                }
-                addTitle='افزودن محصول'
-                onClick={productClick}
-                pending={pending}
-                deletePending={deletePending}
-            />
+            <ServicesContainer>
+                <ServicesDrug
+                    type='prescription'
+                    title='دیافت دارو با نسخه'
+                    addTitle='آپلود نسخه جدید'
+                    onClick={prescriptionClick}
+                    pending={pending}
+                    deletePending={deletePending}
+                />
+                <ServicesDrug
+                    type='product'
+                    title={
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <span>دریافت دارو بدون نسخه</span>
+                            <span style={{ fontSize: 12 }}>و محصولات داروخانه ای</span>
+                        </div>
+                    }
+                    addTitle='افزودن محصول'
+                    onClick={productClick}
+                    pending={pending}
+                    deletePending={deletePending}
+                />
+            </ServicesContainer>
             <Prescription
                 opened={popup === 'prescription'}
                 popupHandler={prescriptionPopupHandler}

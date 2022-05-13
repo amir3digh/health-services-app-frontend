@@ -1,43 +1,57 @@
 @import "../../styles/globalConfig";
+@import "../../styles/responsive";
 
 .container {
   position: absolute;
   top: 90px;
   left: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  z-index: 1000;
 }
+
 .logo {
   grid-column: 2 / span 2;
   margin-bottom: 10px;
+
+  @include lg {
+    display: none;
+  }
 }
+
 .registerForm,
 .verifyForm {
   grid-column: span 4;
+
+  @include lg {
+    grid-column: span 5;
+  }
+
   width: 100%;
+
   form {
-    > * {
+    >* {
       margin-bottom: 23px;
     }
   }
 }
+
 .title {
   width: 100%;
   font-size: 14px;
   line-height: 1;
   display: flex;
   flex-direction: column;
-  > * {
+
+  >* {
     margin-bottom: 12px;
   }
 }
+
 .error {
   font-size: 10px;
   color: #6d6d6d;
 }
+
 .userInput {
   height: 48px;
   display: flex;
@@ -47,6 +61,7 @@
   border-radius: 24px;
   padding: 0 20px;
   background-color: #fff;
+
   input {
     width: 70%;
     border: none;
@@ -57,27 +72,33 @@
     flex-grow: 1;
     background-color: transparent !important;
   }
+
   input[type="text"]:focus {
     background-color: transparent;
     outline: none;
   }
+
   svg {
     flex-shrink: 0;
   }
 }
+
 .verifyCode {
   flex-direction: column;
   position: relative;
 }
+
 .codeInput {
   direction: ltr;
   z-index: 5;
+
   input {
     background-color: transparent;
     border: none !important;
     font-family: iransans !important;
   }
 }
+
 .verifyCodeContainer {
   position: absolute;
   left: 20px;
@@ -87,10 +108,12 @@
   display: flex;
   align-items: flex-end;
   direction: ltr;
+
   svg {
     flex-grow: 1;
   }
 }
+
 .submit {
   display: flex;
   justify-content: center;
@@ -104,9 +127,24 @@
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
   margin: auto;
 }
+
 .rules {
   display: flex;
   font-size: 12px;
   align-items: center;
   justify-content: space-between;
+}
+
+.imageContainer {
+  display: none;
+  @include lg{
+    display: grid;
+  }
+  position: absolute;
+  top: 215px;
+  z-index: 100;
+}
+
+.image {
+  grid-column: 5 / span 8;
 }

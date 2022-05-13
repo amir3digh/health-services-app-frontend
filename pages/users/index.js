@@ -127,8 +127,8 @@ export default function Register() {
     }
 
     return (
-        <div className={styles.container}>
-            <div className='global-container'>
+        <>
+            <div className={`${styles.container} global-container`}>
                 <div className={styles.logo}>
                     <Image
                         src='/images/logo.png'
@@ -220,6 +220,16 @@ export default function Register() {
                     </div>
                     : ''}
             </div>
-        </div>
+            <div className={`${styles.imageContainer} global-container`}>
+                <div className={styles.image}>
+                    <Image
+                        width={721}
+                        height={400}
+                        src='/images/login_page_img.svg'
+                        alt='doctor services'
+                    />
+                </div>
+            </div>
+        </>
     )
 }

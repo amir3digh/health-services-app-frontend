@@ -1,3 +1,5 @@
+@import '../../../styles/responsive';
+
 .container {
   display: flex;
   align-items: center;
@@ -7,6 +9,9 @@
 .checkLabel {
   font-size: 10px;
   margin-left: 5px;
+  @include lg{
+    font-size: 16px;
+  }
 }
 .checkContainer {
   position: relative;

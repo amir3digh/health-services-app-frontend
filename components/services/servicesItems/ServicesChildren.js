@@ -32,7 +32,7 @@ export default function ServicesChildren(props) {
     }
 
     return (
-        <button id={id} onClick={handleClick} disabled={loading} className={styles.container + ' global-container'}>
+        <button id={id} onClick={handleClick} disabled={loading} className={styles.childContainer}>
             <RadioBtn checked={pending} />
             <div className={styles.childBox}>
                 <div className={styles.servicesTitle}>{title}</div>

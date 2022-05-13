@@ -11,6 +11,23 @@ const { className, styles } = css.resolve`
     right: 0;
     margin-right: 23px;
   }
+  .carousel {
+    display: flex;
+    align-items: center;
+    padding: 60px 28px;
+  }
+  .carousel-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .carousel-body-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel > * {
+    width: 100%;
+  }
   .servicesItemBig,
   .servicesItemSmall {
     background-color: #fff;
@@ -53,6 +70,40 @@ const { className, styles } = css.resolve`
   }
   .serviceTitle {
     font-size: 15px;
+  }
+  .illustraion-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 135px;
+    padding-bottom: 135px;
+  }
+  .explain-container {
+    padding: 74px 0;
+    background-color: #F2F2F2;
+  }
+  .explain {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .explain-box {
+    width: 100%;
+    height: 290px;
+    background-color: #fff;
+    border-radius: 59px;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.16);
+  }
+  .contact-container {
+    grid-column: 1 / span 12;
+    background-color: #fff; 
+    width: 100%;
+    height: 290px;
+    border-radius: 59px;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.16);
+  }
+  .contact-title {
+    grid-column: 1 / span 12;
+    text-align: right;
+    width: 100%;
   }
 `
 

@@ -8,6 +8,7 @@ import { AnimatePresence, useAnimation } from 'framer-motion'
 import '../styles/global.scss'
 import '../styles/_globalConfig.scss'
 import { userProfileRequest } from '../lib/requests'
+import { Footer } from '../components/footer/Footer'
 
 function MyApp({ Component, pageProps, router }) {
   const pageTitle = pageProps.title;
@@ -53,6 +54,7 @@ function MyApp({ Component, pageProps, router }) {
         <Component {...pageProps} key={slug} />
       </AnimatePresence>
       {layout.bottomNav && <BottomNav />}
+      {layout.footer && <Footer />}
       {/* <Popup
         opened={popup.opened}
         popupControls={popupControls}

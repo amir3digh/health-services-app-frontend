@@ -1,45 +1,80 @@
+@import '../../../styles/responsive';
+
 .container {
   position: relative;
   margin-bottom: 24px;
-  > * {
+  max-width: 425px;
+  margin: auto;
+  >* {
     margin-bottom: 16px;
   }
+  @include lg{
+    max-width: 100%;
+    >* {
+      margin-bottom: 23px;
+    }
+  }
 }
+
 .supportIcon {
   position: absolute;
   top: -10px;
   left: 25px;
+  @include lg{
+    left: 133px;
+    top: 0;
+  }
 }
+
 .detailsContainer {
-  > * {
+  >* {
     grid-column: span 4;
     text-align: right;
     width: 100%;
   }
 }
+
 .title {
   font-size: 15px;
   font-family: iransans;
   margin-bottom: 1rem;
+
+  @include lg {
+    font-size: 30px;
+    grid-column: span 12;
+  }
 }
+
 .description {
   font-size: 10px;
   color: #5b5b5b;
+
+  @include lg {
+    font-size: 13px;
+    grid-column: span 12;
+  }
 }
+
 .noskhehText {
   width: 100%;
   font-size: 12px;
   grid-column: 1 / span 2;
+  @include lg{
+    grid-column: span 3;
+    font-size: 16px;
+  }
 }
+
 .checkContainer {
   display: flex;
   width: 100%;
   justify-content: flex-end;
-  > * {
+  >* {
     padding-left: 10px;
   }
-  grid-column: 3 / span 2;
+  grid-column: span 2;
 }
+
 .prescription {
   grid-column: span 4;
   width: 100%;
@@ -51,6 +86,7 @@
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
   border-radius: 24px;
   background-color: #fff;
+
   span {
     font-size: 12px;
     color: #5b5b5b;
