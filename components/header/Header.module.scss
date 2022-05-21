@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   z-index: 16;
-  max-width: 100%!important;
+  max-width: 100% !important;
 
   >* {
     display: flex;
@@ -20,30 +20,56 @@
   }
 
   @include lg {
-    display: none!important;
+    display: none !important;
   }
 }
 
 .topbar {
   display: none !important;
-  @include lg{
-    display: grid!important;
+
+  @include lg {
+    display: grid !important;
     background-color: $color4;
     height: 140px;
   }
 }
 
 .topbarCall {
+  position: relative;
   grid-column: 11 / span 2 !important;
+}
+
+.topbarCallBox {
+  position: relative;
   margin: 0 !important;
+  width: 157px !important;
   height: 50px !important;
   padding: 0 16px !important;
+  z-index: 10;
+}
+.topbarCallIcon{
+  position: absolute;
+  top: -6px;
+  left: -9px;
+  
+  svg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 20;
+  }
+}
+.callBtnCircle{
+  z-index: 5!important;
+  left: 1px!important;
+  top: -1px!important;
 }
 
 .desktopHeader {
   display: none !important;
+
   @include lg {
-    display: grid!important;
+    display: grid !important;
     position: sticky;
     top: 0;
     z-index: 16;

@@ -19,7 +19,7 @@ export default function PendingItem(props) {
         return formatter.format(price);
     }
     return (
-        <div className="item-box">
+        <div className={`item-box ${styles.items}`}>
             <div className="title">
                 <div>{title}</div>
                 <div className="subtitle">قیمت: {stylizePrice(price)} تومان</div>

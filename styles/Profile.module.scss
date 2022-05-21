@@ -1,12 +1,14 @@
 @import "../styles/responsive";
 
-.container{
+.container {
   align-items: flex-start;
-  @include lg{
+
+  @include lg {
     grid-auto-flow: column;
     grid-template-rows: repeat(5, auto);
   }
 }
+
 .location {
   width: 100%;
   grid-column: span 4;
@@ -21,10 +23,12 @@
   padding: 15px 0;
   line-height: 1;
   margin-bottom: 23px;
-  @include lg{
+
+  @include lg {
     grid-column: span 6;
   }
 }
+
 .gender {
   width: 100%;
   grid-column: span 4;
@@ -32,16 +36,19 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 23px;
-  @include lg{
+
+  @include lg {
     grid-column: span 6;
   }
 }
+
 .genderIconContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   column-gap: 25px;
 }
+
 .genderIcon {
   position: relative;
   background-color: transparent;
@@ -50,17 +57,20 @@
   border-radius: 100%;
   overflow: hidden;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+
   svg {
     position: absolute;
     top: 1px;
     right: 1px;
   }
 }
+
 .activeGender {
   border: #117c6f solid 2px;
   width: 52px;
   height: 52px;
 }
+
 .togglePage {
   width: 100%;
   position: fixed;
@@ -72,7 +82,8 @@
   text-align: center;
   padding: 18px 0;
   z-index: 1000;
-  @include lg{
+
+  @include lg {
     grid-column: 4 / span 6;
     margin: auto;
     position: relative;
@@ -86,11 +97,13 @@
   position: relative;
   padding: 72px 0;
   z-index: 5;
-  @include lg{
+
+  @include lg {
     height: 500px;
     padding: 0;
   }
 }
+
 .mapTitle {
   font-size: 12px;
   position: absolute;
@@ -102,6 +115,7 @@
   top: 95px;
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
 }
+
 .mapLocate {
   position: absolute;
   background-color: #fff;
@@ -113,45 +127,72 @@
   box-shadow: inset 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
   display: flex;
 }
+
 .description {
   width: 100%;
   grid-column: 1 / span 4;
   font-size: 12px;
   margin-bottom: 23px;
+  @include lg{
+    grid-column: span 12;
+  }
 }
+
 .title {
   width: 100%;
   grid-column: 1 / span 4;
   font-size: 15px;
   text-align: right;
   margin-bottom: 15px;
+  @include lg{
+    grid-column: span 12;
+  }
 }
+
 .sum {
   width: 100%;
   grid-column: 1 / span 4;
   font-size: 15px;
 }
+
 .action {
   position: fixed;
   bottom: 23px;
+  right: 0;
+  left: 0;
   width: 100%;
   row-gap: 16px;
+  @include lg {
+    position: static;
+    margin-top: 46px;
+  }
+
   .submit,
   .cancel {
     width: 97%;
-    grid-column: 1 / span 4;
     font-size: 15px;
     color: #fff;
     line-height: 1;
     padding-bottom: 16px;
     padding-top: 16px;
     border-radius: 24px;
+
+    @include lg {
+      width: 260px;
+    }
   }
+
   .submit {
+    grid-column: span 4;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
     background-color: #117c6f;
+    @include lg {
+      grid-column: 3 / span 4;
+    }
   }
+
   .cancel {
+    grid-column: span 4;
     box-shadow: inset 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
     background-color: #289c8e;
   }

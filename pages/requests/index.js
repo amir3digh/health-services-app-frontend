@@ -8,7 +8,7 @@ import Popup from '../../components/popup/Popup';
 import { useAnimation } from 'framer-motion';
 
 export function getStaticProps() {
-    return { props: { title: 'درخواست ها', layout: { header: true, bottomNav: true } } }
+    return { props: { title: 'درخواست ها', layout: { header: true,footer: true, bottomNav: true } } }
 }
 
 export default function RequestPage() {
@@ -34,6 +34,10 @@ export default function RequestPage() {
             setPaid(result);
         }
     }
+    const [last, setLast] = useState([]);
+    const updateLast = async () => {
+
+    }
     const popupControls = useAnimation();
     const [popup, setPopup] = useState({ opened: false });
     const [deleteData, setDeleteData] = useState({});
@@ -58,16 +62,22 @@ export default function RequestPage() {
 
     return (
         <Layout name='requests'>
-            <div className={styles.toggleBtnContainer}>
+            <div className={`global-container`}>
+                <h1 className={styles.title}>درخواست ها</h1>
+            </div>
+            <div className={`${styles.toggleBtnContainer} global-container`}>
                 <button onClick={() => setShow('pending')} className={styles.toggleBtn + ' ' + (show === 'pending' && styles.enabled)}>
                     درخواست های فعال
                 </button>
                 <button onClick={() => setShow('paid')} className={styles.toggleBtn + ' ' + (show === 'paid' && styles.enabled)}>
                     درخواست های پیشین
                 </button>
+                <button onClick={() => setShow('last')} className={styles.toggleBtn + ' ' + (show === 'last' && styles.enabled)}>
+                    درخواست های پیشین
+                </button>
             </div>
             <div className="global-container">
-                <div className={styles.title}>لیست درخواست های {show === 'pending' ? 'فعال' : 'پیشین'}</div>
+                {/* <div className={styles.title}>لیست درخواست های {show === 'pending' ? 'فعال' : 'پیشین'}</div> */}
                 {show === 'pending' && pending.map(el => (
                     <PendingItem
                         key={el.pending_service_id}

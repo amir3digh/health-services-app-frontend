@@ -12,7 +12,7 @@ import { Female, Male } from "../../../components/microComponents/icons/Icons";
 import Layout from "../../../components/layout/Layout";
 
 export function getStaticProps() {
-    return { props: { title: 'ثبت نهایی درخواست', layout: { header: true, bottomNav: false } } }
+    return { props: { title: 'ثبت نهایی درخواست', layout: { header: true, footer: true, bottomNav: false } } }
 }
 
 export default function Pending() {
@@ -169,8 +169,8 @@ export default function Pending() {
                             onChange={setDescription}
                             textarea
                         />
+                        <button onClick={() => setPageState('pendingItems')} className={styles.togglePage}>ثبت و مشاهده لیست خدمات درخواستی</button>
                     </div>
-                    <button onClick={() => setPageState('pendingItems')} className={styles.togglePage}>ثبت و مشاهده لیست خدمات درخواستی</button>
                 </Layout>
             )}
             {pageState === 'location' && (

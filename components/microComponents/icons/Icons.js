@@ -542,3 +542,32 @@ export function WhiteInstagram() {
         </svg>
     )
 }
+export function CallBtnHeader() {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="69" height="68" viewBox="0 0 69 68">
+            <defs>
+                <filter id="Ellipse_140" x="0" y="0" width="69" height="68" filterUnits="userSpaceOnUse">
+                    <feOffset dy="3" input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feFlood floodOpacity="0.161" />
+                    <feComposite operator="in" in2="blur" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+                <filter id="phone" x="19.631" y="17.636" width="30.738" height="30.729" filterUnits="userSpaceOnUse">
+                    <feOffset dy="2" input="SourceAlpha" />
+                    <feGaussianBlur stdDeviation="0.75" result="blur-2" />
+                    <feFlood floodOpacity="0.161" />
+                    <feComposite operator="in" in2="blur-2" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+            </defs>
+            <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_140)">
+                <ellipse id="Ellipse_140-2" data-name="Ellipse 140" cx="25.5" cy="25" rx="25.5" ry="25" transform="translate(9 6)" fill="#117c6f" />
+            </g>
+            <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#phone)">
+                <path id="phone-2" data-name="phone" d="M26.576,29.6H26.4C6.581,28.464,3.768,11.738,3.374,6.634A3.026,3.026,0,0,1,6.158,3.375h5.559a2.018,2.018,0,0,1,1.877,1.271l1.532,3.773a2.018,2.018,0,0,1-.444,2.179l-2.148,2.169a9.452,9.452,0,0,0,7.646,7.667l2.189-2.169a2.018,2.018,0,0,1,2.189-.413l3.8,1.523A2.018,2.018,0,0,1,29.6,21.251v5.326A3.026,3.026,0,0,1,26.576,29.6ZM6.4,5.393A1.009,1.009,0,0,0,5.391,6.4v.081c.464,5.972,3.44,20.1,21.125,21.1a1.009,1.009,0,0,0,1.07-.948V21.251l-3.8-1.524-2.9,2.875-.484-.061c-8.776-1.1-9.967-9.876-9.967-9.967l-.061-.484,2.865-2.9-1.514-3.8Z" transform="translate(18.52 14.51)" fill="#fff" />
+            </g>
+        </svg>
+    )
+
+}

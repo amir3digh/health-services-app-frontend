@@ -59,7 +59,9 @@ export default function Map(props) {
         <MapContainer
             center={position}
             zoom={16}
-            style={{ height: "100%", width: "100%" }} >
+            style={{ height: "100%", width: "100%" }}
+            scrollWheelZoom={false}
+        >
             <TileLayer
                 url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYW1pcjNkaWdoIiwiYSI6ImNrem9ocXBhejBqaHIyeHFzc2lna3FyZWMifQ.jIbbftTazBt6mE2Ws1AzAg`}
                 attribution='Map data &copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors, <a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;>CC-BY-SA</a>, Imagery &copy; <a href=&quot;https://www.mapbox.com/&quot;>Mapbox</a>'
@@ -67,7 +69,7 @@ export default function Map(props) {
             <LocationMarker />
             <CurrentLocation />
             <div className="global-container">
-                <button onClick={submitHandler} className={props.submitStyle} style={{top: 420}}>ثبت موقعیت مکانی مشخص شده</button>
+                <button onClick={submitHandler} className={props.submitStyle} style={{ top: 420 }}>ثبت موقعیت مکانی مشخص شده</button>
             </div>
         </MapContainer>
     );

@@ -1,20 +1,20 @@
+@import '../../../styles/responsive';
+
 .container {
   position: absolute;
   top: 75px;
   bottom: 75px;
   left: 0;
   right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+}
+.mobileContainer {
+  grid-column: span 4;
 }
 .logo {
-  grid-column: 2 / span 2;
   margin-bottom: 23px;
+  width: 140px;
 }
 .message {
-  grid-column: 1 / span 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,11 +35,17 @@
   width: 100%;
 }
 .back {
-  grid-column: 1 / span 4;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 15px;
   row-gap: 15px;
   text-align: center;
+}
+.notifyImg{
+  display: none;
+  @include lg{
+    display: block;
+    grid-column: 6 / span 8;
+  }
 }
