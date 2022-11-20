@@ -94,6 +94,9 @@
 .carouselBody {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  .active{
+    display: none;
+  }
 }
 .carouselBodyChild {
   display: flex;

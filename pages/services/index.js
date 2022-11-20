@@ -3,6 +3,7 @@ import styles from '../../styles/Services.module.scss'
 import Link from 'next/link'
 import { servicesRequest } from '../../lib/requests'
 import Layout from '../../components/layout/Layout'
+import Carousel from 'react-bootstrap/Carousel';
 
 // import { className, styles } from '../../styles/Services.styles'
 
@@ -14,7 +15,7 @@ export async function getStaticProps() {
             {
                 servicesData: response.result,
                 title: 'دکترخونه',
-                layout: { header: true,footer: true, bottomNav: true }
+                layout: { header: true, footer: true, bottomNav: true }
             }
         }
         : 'error';
@@ -35,7 +36,53 @@ export default function Services({ servicesData }) {
                 </div>
             </section>
             <section className={styles.carousel}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14.199" height="25.023" viewBox="0 0 14.199 25.023">
+                <Carousel >
+                    <Carousel.Item bsPrefix={`${styles.carouselBody} `}>
+                        <div className={styles.carouselBodyChild}>
+                            <div>
+                                <Image
+                                    src='/images/logo_textless.png'
+                                    width='130'
+                                    height='130'
+                                    alt='doctorkhoneh logo'
+                                />
+                                <h2>درخواست آسان خدمات پزشکی در منزل</h2>
+                            </div>
+                        </div>
+                        <div className={styles.carouselBodyChild}>
+                            <Image
+                                src='/images/services/carousel_1.svg'
+                                width='516'
+                                height='426.073'
+                                alt='carousel'
+                            />
+                        </div>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <div className={styles.carouselBody}>
+                            <div className={styles.carouselBodyChild}>
+                                <div>
+                                    <Image
+                                        src='/images/logo_textless.png'
+                                        width='130'
+                                        height='130'
+                                        alt='doctorkhoneh logo'
+                                    />
+                                    <h2>درخواست آسان خدمات پزشکی در منزل</h2>
+                                </div>
+                            </div>
+                            <div className={styles.carouselBodyChild}>
+                                <Image
+                                    src='/images/services/carousel_1.svg'
+                                    width='516'
+                                    height='426.073'
+                                    alt='carousel'
+                                />
+                            </div>
+                        </div>
+                    </Carousel.Item>
+                </Carousel>
+                {/* <svg xmlns="http://www.w3.org/2000/svg" width="14.199" height="25.023" viewBox="0 0 14.199 25.023">
                     <path id="chevron-back" d="M12.938,7.875,23.063,18,12.938,28.125" transform="translate(-10.552 -5.489)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.375" />
                 </svg>
                 <div className={styles.carouselBody}>
@@ -61,7 +108,7 @@ export default function Services({ servicesData }) {
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="13.196" height="25.017" viewBox="0 0 13.196 25.017">
                     <path id="chevron-back" d="M22.063,7.875,12.938,18l9.125,10.125" transform="translate(-11.251 -5.492)" fill="none" stroke="#117c6f" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.375" />
-                </svg>
+                </svg> */}
             </section>
             <section className={`${styles.services} global-container`}>
                 <h2 className={styles.servicesTitle}>خدمات پزشکی دکترخونه</h2>
